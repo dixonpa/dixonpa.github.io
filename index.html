@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paulo Alvarez</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Variables de color */
+    :root {
+      --bg: #f9f9f9;
+      --fg: #333;
+      --primary: #3498db;
+      --header-bg: #2c3e50;
+      --header-fg: #fff;
+      --card-bg: #fff;
+      --footer-bg: #ecf0f1;
+      --title-color: #222;           /* Color para h1, h2 en light mode */
+      --card-title-color: #007acc;   /* Color para h3 en light mode */
+    }
+    [data-theme="dark"] {
+      --bg: #1e1e1e;
+      --fg: #ddd;
+      --primary: #3fa7ff;
+      --header-bg: #121212;
+      --header-fg: #eee;
+      --card-bg: #2a2a2a;
+      --footer-bg: #1a1a1a;
+      --title-color: #eee;           /* Color para h1, h2 en dark mode */
+      --card-title-color: #66bfff;   /* Color para h3 en dark mode */
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      transition: background .3s, color .3s;
+    }
+
+    header {
+      background: var(--header-bg);
+      color: var(--header-fg);
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: var(--title-color);
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: .5rem;
+    }
+
+    /* Fotografía */
+    .photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      margin: 1rem auto 0;
+    }
+
+    /* Toggle dark mode */
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card-bg);
+      border: none;
+      padding: .5rem 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,.1);
+      color: var(--fg);
+      transition: background .3s, color .3s;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section { margin-bottom: 3rem; }
+
+    h2 {
+      color: var(--title-color);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: .5rem;
+    }
+
+    .project {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid var(--primary);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: background .3s, box-shadow .3s;
+    }
+    .project h3 {
+      margin-top: 0;
+      margin-bottom: .5rem;
+      color: var(--card-title-color);
+    }
+    .project p { margin: .5rem 0; }
+    .project a {
+      display: inline-block;
+      margin-top: .5rem;
+      color: var(--header-fg);
+      background: var(--primary);
+      padding: .4rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background .3s;
+    }
+    .project a:hover { background: var(--header-fg); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--footer-bg);
+      font-size: .9rem;
+      transition: background .3s;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .project { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="theme-toggle" id="toggleTheme">🌙</button>
+    <h1>Paulo Alvarez</h1>
+    <p>Ingeniero Geofísico | Data Scientist | JAVA & SQL </p>
+    <img src="https://media.licdn.com/dms/image/v2/D4E03AQEx_8EEuuYjoA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1695695021096?e=1752105600&v=beta&t=yt6y8sMkMhFTX4wIEFVV1O4wbnfCiY4BFryt0BENRjc" alt="Foto de Dixon P." class="photo">
+  </header>
+
+  <div class="container">
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <p>
+        Soy ingeniero geofísico con experiencia en análisis de datos, desarrollo backend en Java y proyectos de ciencia de datos aplicados a negocios. Me apasiona usar la inteligencia artificial y la programación para resolver problemas reales.
+      </p>
+    </section>
+    <section id="habilidades">
+      <h2>🧠 Habilidades de Data Scientist</h2>
+      <ul>
+        <li>✔️ Python (pandas, numpy, scikit-learn, matplotlib, seaborn)</li>
+        <li>✔️ Machine Learning Supervisado y No Supervisado</li>
+        <li>✔️ NLP con BERT, TF-IDF, spaCy</li>
+        <li>✔️ Visualización de datos (Tableau, Power BI)</li>
+        <li>✔️ SQL y manejo de bases de datos</li>
+        <li>✔️ Modelos de predicción, segmentación y detección de anomalías</li>
+        <li>✔️ ETL - Pipelines</li>
+        <li>✔️ Apachae Spark</li>
+        <li>✔️ Git, GitHub, y despliegue en GitHub Pages</li>
+      </ul>
+    </section>    
+    <section id="proyectos">
+      <h2>Proyectos destacados</h2>
+
+      <div class="project">
+        <h3>📊 Telecom - Predicción de Cancelación de Clientes</h3>
+        <p><strong>Objetivo:</strong> Predecir qué clientes están en riesgo de cancelar sus servicios.</p>
+        <p><strong>Descripción:</strong> Modelos de clasificación (Random Forest, XGBoost, LightGBM) con preprocesamiento, oversampling y análisis de importancia.</p>
+        <p><strong>Resultados:</strong> F1-score de 0.89 y AUC-ROC de 0.93 con LightGBM.</p>
+        <a href="https://github.com/dixonpa/telecom" target="_blank">Ver código en GitHub</a>
+      </div>
+
+      <div class="project">
+        <h3>🛢️ Onlygiant - Selección del Mejor Pozo</h3>
+        <p><strong>Objetivo:</strong> Identificar el pozo más rentable según VPN y TIR.</p>
+        <p><strong>Descripción:</strong> Cálculo de reservas in situ y métricas económicas; análisis comparativo.</p>
+        <p><strong>Resultados:</strong> Pozo seleccionado con TIR >30% y VPN positivo.</p>
+        <a href="https://github.com/dixonpa/Onlygiant" target="_blank">Ver código en GitHub</a>
+      </div>
+
+      <!-- Más proyectos aquí -->
+    </section>
+
+    <section id="contacto">
+      <h2>📬 Contacto</h2>
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
+        <a href="https://github.com/dixonpa" target="_blank" title="GitHub">
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/paulocealva/" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin fa-2x" style="color: #0A66C2;"></i>
+        </a>
+        <a href="mailto:palvareza17@gmail.com" title="Gmail">
+          <i class="fas fa-envelope fa-2x" style="color: #c71610;"></i>
+        </a>
+        <a href="https://wa.link/joofbw" target="_blank" title="WhatsApp">
+          <i class="fab fa-whatsapp fa-2x" style="color: #25D366;"></i>
+        </a>
+      </div>
+    </section>
+    
+  </div>
+  
+  <footer>
+    © 2025 Dixon P. | palvareza17@gmail.com
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleTheme');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    toggleBtn.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+    toggleBtn.addEventListener('click', () => {
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
+</body>
+</html>
