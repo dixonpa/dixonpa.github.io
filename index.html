@@ -3,31 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Paulo Alvarez</title>
+  <meta name="description" content="Paulo Alvarez - Data Scientist y Data Analyst Junior. Proyectos de Machine Learning con Python.">
+  <title>Paulo Alvarez | Data Scientist</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     /* Variables de color */
     :root {
       --bg: #f9f9f9;
       --fg: #333;
-      --primary: #3498db;
+      --muted: #666;
+      --primary: #2980b9;
+      --primary-hover: #1f6391;
       --header-bg: #2c3e50;
       --header-fg: #fff;
       --card-bg: #fff;
       --footer-bg: #ecf0f1;
-      --title-color: #222;           /* Color para h1, h2 en light mode */
-      --card-title-color: #007acc;   /* Color para h3 en light mode */
+      --title-color: #222;
+      --card-title-color: #007acc;
+      --tag-bg: #eaf2f8;
     }
     [data-theme="dark"] {
       --bg: #1e1e1e;
       --fg: #ddd;
+      --muted: #aaa;
       --primary: #3fa7ff;
+      --primary-hover: #1c7ed6;
       --header-bg: #121212;
       --header-fg: #eee;
       --card-bg: #2a2a2a;
       --footer-bg: #1a1a1a;
-      --title-color: #eee;           /* Color para h1, h2 en dark mode */
-      --card-title-color: #66bfff;   /* Color para h3 en dark mode */
+      --title-color: #eee;
+      --card-title-color: #66bfff;
+      --tag-bg: #33414d;
     }
 
     * { box-sizing: border-box; }
@@ -50,7 +57,7 @@
     header h1 {
       margin: 0;
       font-size: 2.5rem;
-      color: var(--title-color);
+      color: var(--header-fg);
     }
     header p {
       font-size: 1.2rem;
@@ -95,6 +102,15 @@
       padding-bottom: .5rem;
     }
 
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .skills ul { margin: 0; padding-left: 1.2rem; }
+    .skills h3 { margin: 0 0 .5rem; color: var(--card-title-color); font-size: 1.05rem; }
+    .learning { color: var(--muted); margin-top: 1rem; }
+
     .project {
       background: var(--card-bg);
       padding: 1.5rem;
@@ -109,17 +125,35 @@
       color: var(--card-title-color);
     }
     .project p { margin: .5rem 0; }
+    .tags { margin: .75rem 0 0; }
+    .tags span {
+      display: inline-block;
+      background: var(--tag-bg);
+      border-radius: 4px;
+      padding: .1rem .5rem;
+      margin: 0 .3rem .3rem 0;
+      font-size: .85rem;
+    }
     .project a {
       display: inline-block;
       margin-top: .5rem;
-      color: var(--header-fg);
+      color: #fff;
       background: var(--primary);
       padding: .4rem 1rem;
       border-radius: 4px;
       text-decoration: none;
       transition: background .3s;
     }
-    .project a:hover { background: var(--header-fg); }
+    .project a:hover { background: var(--primary-hover); }
+
+    .contact {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .contact a { color: var(--fg); text-decoration: none; }
+    .contact a:hover { color: var(--primary); }
 
     footer {
       text-align: center;
@@ -131,95 +165,129 @@
 
     @media (max-width: 600px) {
       header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
       .project { padding: 1rem; }
     }
   </style>
 </head>
 <body>
   <header>
-    <button class="theme-toggle" id="toggleTheme">🌙</button>
+    <button class="theme-toggle" id="toggleTheme" aria-label="Cambiar tema">🌙</button>
+    <img src="https://github.com/dixonpa.png" alt="Foto de Paulo Alvarez" class="photo">
     <h1>Paulo Alvarez</h1>
-    <p>Ingeniero Geofísico | Data Scientist | JAVA & SQL </p>
-    <img src="https://media.licdn.com/dms/image/v2/D4E03AQEx_8EEuuYjoA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1695695021096?e=1752105600&v=beta&t=yt6y8sMkMhFTX4wIEFVV1O4wbnfCiY4BFryt0BENRjc" alt="Foto de Dixon P." class="photo">
+    <p>Data Scientist &amp; Data Analyst Junior | Ingeniero Geofísico</p>
   </header>
 
   <div class="container">
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
       <p>
-        Soy ingeniero geofísico con experiencia en análisis de datos, desarrollo backend en Java y proyectos de ciencia de datos aplicados a negocios. Me apasiona usar la inteligencia artificial y la programación para resolver problemas reales.
+        Soy ingeniero geofísico y me pasé al mundo de los datos. Me gusta tomar un problema de negocio,
+        explorar los datos y construir un modelo que ayude a tomar una decisión. También tengo experiencia
+        como desarrollador backend en Java.
       </p>
     </section>
+
     <section id="habilidades">
-      <h2>🧠 Habilidades de Data Scientist</h2>
-      <ul>
-        <li>✔️ Python (pandas, numpy, scikit-learn, matplotlib, seaborn)</li>
-        <li>✔️ Machine Learning Supervisado y No Supervisado</li>
-        <li>✔️ NLP con BERT, TF-IDF, spaCy</li>
-        <li>✔️ Visualización de datos (Tableau, Power BI)</li>
-        <li>✔️ SQL y manejo de bases de datos</li>
-        <li>✔️ Modelos de predicción, segmentación y detección de anomalías</li>
-        <li>✔️ ETL - Pipelines</li>
-        <li>✔️ Apachae Spark</li>
-        <li>✔️ Git, GitHub, y despliegue en GitHub Pages</li>
-      </ul>
-    </section>    
+      <h2>Habilidades</h2>
+      <div class="skills">
+        <div>
+          <h3>Análisis de datos</h3>
+          <ul>
+            <li>Python: pandas, NumPy</li>
+            <li>SQL</li>
+            <li>Visualización: matplotlib, seaborn, Power BI</li>
+            <li>Análisis exploratorio y estadística (bootstrapping, intervalos de confianza)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Machine Learning</h3>
+          <ul>
+            <li>scikit-learn: Pipelines, validación cruzada, GridSearch</li>
+            <li>Clasificación y regresión: Random Forest, XGBoost, regresión logística y lineal</li>
+            <li>Datos desbalanceados: SMOTE, pesos de clase y umbral de decisión</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Herramientas</h3>
+          <ul>
+            <li>Jupyter</li>
+            <li>Git y GitHub</li>
+            <li>Java (backend)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="learning"><strong>Aprendiendo:</strong> AWS, Apache Spark y NLP.</p>
+    </section>
+
     <section id="proyectos">
-      <h2>Proyectos destacados</h2>
+      <h2>Proyectos</h2>
 
       <div class="project">
-        <h3>📊 Telecom - Predicción de Cancelación de Clientes</h3>
-        <p><strong>Objetivo:</strong> Predecir qué clientes están en riesgo de cancelar sus servicios.</p>
-        <p><strong>Descripción:</strong> Modelos de clasificación (Random Forest, XGBoost, LightGBM) con preprocesamiento, oversampling y análisis de importancia.</p>
-        <p><strong>Resultados:</strong> F1-score de 0.89 y AUC-ROC de 0.93 con LightGBM.</p>
-        <a href="https://github.com/dixonpa/telecom" target="_blank">Ver código en GitHub</a>
+        <h3>Detección de fraude con tarjeta de crédito</h3>
+        <p><strong>Objetivo:</strong> Detectar transacciones fraudulentas en 1.8 millones de registros donde solo el 0.58% son fraude.</p>
+        <p><strong>Qué hice:</strong> EDA, creación de variables (hora, edad, distancia), validación por fecha y comparación de Random Forest, XGBoost y regresión logística. Ajuste del umbral de decisión.</p>
+        <p><strong>Resultado:</strong> Random Forest con AUC-PR de 0.88 y F1 de 0.82. Detecta el 85% de los fraudes.</p>
+        <div class="tags"><span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>Clasificación</span></div>
+        <a href="https://github.com/dixonpa/FraudDetection" target="_blank" rel="noopener">Ver código en GitHub</a>
       </div>
 
       <div class="project">
-        <h3>🛢️ Onlygiant - Selección del Mejor Pozo</h3>
-        <p><strong>Objetivo:</strong> Identificar el pozo más rentable según VPN y TIR.</p>
-        <p><strong>Descripción:</strong> Cálculo de reservas in situ y métricas económicas; análisis comparativo.</p>
-        <p><strong>Resultados:</strong> Pozo seleccionado con TIR >30% y VPN positivo.</p>
-        <a href="https://github.com/dixonpa/Onlygiant" target="_blank">Ver código en GitHub</a>
+        <h3>Telecom: predicción de cancelación de clientes</h3>
+        <p><strong>Objetivo:</strong> Predecir qué clientes van a cancelar su contrato para ofrecerles promociones a tiempo.</p>
+        <p><strong>Qué hice:</strong> Unión y limpieza de 4 tablas, EDA, Pipelines con validación cruzada, comparación con y sin SMOTE y ajuste de XGBoost con GridSearch.</p>
+        <p><strong>Resultado:</strong> XGBoost con AUC-ROC de 0.91. Encuentra a 3 de cada 4 clientes que cancelan.</p>
+        <div class="tags"><span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>SMOTE</span></div>
+        <a href="https://github.com/dixonpa/telecom" target="_blank" rel="noopener">Ver código en GitHub</a>
       </div>
 
-      <!-- Más proyectos aquí -->
+      <div class="project">
+        <h3>OilyGiant: elección de región para nuevos pozos</h3>
+        <p><strong>Objetivo:</strong> Elegir en cuál de tres regiones abrir 200 pozos de petróleo con el menor riesgo de pérdida.</p>
+        <p><strong>Qué hice:</strong> Regresión lineal por región para predecir reservas y 1000 simulaciones con bootstrapping para estimar la ganancia y el riesgo.</p>
+        <p><strong>Resultado:</strong> Región recomendada con 4.8 millones USD de ganancia promedio y 2% de riesgo de pérdida.</p>
+        <div class="tags"><span>Python</span><span>Regresión lineal</span><span>Bootstrapping</span></div>
+        <a href="https://github.com/dixonpa/Onlygiant" target="_blank" rel="noopener">Ver código en GitHub</a>
+      </div>
     </section>
 
     <section id="contacto">
-      <h2>📬 Contacto</h2>
-      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
-        <a href="https://github.com/dixonpa" target="_blank" title="GitHub">
-          <i class="fab fa-github fa-2x"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/paulocealva/" target="_blank" title="LinkedIn">
+      <h2>Contacto</h2>
+      <div class="contact">
+        <a href="https://www.linkedin.com/in/paulocealva" target="_blank" rel="noopener" title="LinkedIn">
           <i class="fab fa-linkedin fa-2x" style="color: #0A66C2;"></i>
         </a>
-        <a href="mailto:palvareza17@gmail.com" title="Gmail">
+        <a href="https://github.com/dixonpa" target="_blank" rel="noopener" title="GitHub">
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+        <a href="mailto:palvareza17@gmail.com" title="Correo">
           <i class="fas fa-envelope fa-2x" style="color: #c71610;"></i>
         </a>
-        <a href="https://wa.link/joofbw" target="_blank" title="WhatsApp">
+        <a href="https://wa.link/joofbw" target="_blank" rel="noopener" title="WhatsApp">
           <i class="fab fa-whatsapp fa-2x" style="color: #25D366;"></i>
         </a>
+        <a href="mailto:palvareza17@gmail.com">palvareza17@gmail.com</a>
       </div>
     </section>
-    
   </div>
-  
+
   <footer>
-    © 2025 Dixon P. | palvareza17@gmail.com
+    © 2026 Paulo Alvarez
   </footer>
 
   <script>
     const toggleBtn = document.getElementById('toggleTheme');
-    const currentTheme = localStorage.getItem('theme') || 'light';
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem('theme'); } catch (e) {}
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', currentTheme);
     toggleBtn.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
 
     toggleBtn.addEventListener('click', () => {
       const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
+      try { localStorage.setItem('theme', theme); } catch (e) {}
       toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
     });
   </script>
