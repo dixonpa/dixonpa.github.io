@@ -46,7 +46,8 @@ function seismogram() {
   const gauss = () => Math.sqrt(-2 * Math.log(rand() + 1e-9)) * Math.cos(2 * Math.PI * rand());
 
   const duration = 60, dt = 0.025, n = duration / dt;
-  const tP = 9, tS = 17, tR = 24;
+  // el evento llega a la mitad: el texto del hero queda sobre el ruido y las ondas grandes a la derecha
+  const tP = 34, tS = 40, tR = 45;
   const signal = new Float64Array(n);
 
   // ondas: suma de senos con frecuencias cercanas y fase al azar, por una envolvente
@@ -87,15 +88,6 @@ function seismogram() {
     d += `${i ? "L" : "M"}${x.toFixed(1)},${y.toFixed(1)}`;
   }
   path.setAttribute("d", d);
-
-  const axis = fig.querySelector(".seismo-axis");
-  for (let s = 0; s <= duration; s += 10) {
-    const tick = document.createElement("span");
-    tick.style.left = `${(s / duration) * 100}%`;
-    tick.dataset.label = s === 0 ? "0 s" : String(s);
-    if (s === duration) tick.style.transform = "translateX(-100%)";
-    axis.appendChild(tick);
-  }
 
   if (reduceMotion) { fig.classList.add("is-drawn"); return; }
   requestAnimationFrame(() => requestAnimationFrame(() => fig.classList.add("is-drawn")));
