@@ -1,227 +1,349 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Paulo Alvarez</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    /* Variables de color */
-    :root {
-      --bg: #f9f9f9;
-      --fg: #333;
-      --primary: #3498db;
-      --header-bg: #2c3e50;
-      --header-fg: #fff;
-      --card-bg: #fff;
-      --footer-bg: #ecf0f1;
-      --title-color: #222;           /* Color para h1, h2 en light mode */
-      --card-title-color: #007acc;   /* Color para h3 en light mode */
-    }
-    [data-theme="dark"] {
-      --bg: #1e1e1e;
-      --fg: #ddd;
-      --primary: #3fa7ff;
-      --header-bg: #121212;
-      --header-fg: #eee;
-      --card-bg: #2a2a2a;
-      --footer-bg: #1a1a1a;
-      --title-color: #eee;           /* Color para h1, h2 en dark mode */
-      --card-title-color: #66bfff;   /* Color para h3 en dark mode */
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
-      transition: background .3s, color .3s;
-    }
-
-    header {
-      background: var(--header-bg);
-      color: var(--header-fg);
-      padding: 2rem 1rem;
-      text-align: center;
-      position: relative;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: var(--title-color);
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-top: .5rem;
-    }
-
-    /* Fotografía */
-    .photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--primary);
-      margin: 1rem auto 0;
-    }
-
-    /* Toggle dark mode */
-    .theme-toggle {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: var(--card-bg);
-      border: none;
-      padding: .5rem 1rem;
-      cursor: pointer;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0,0,0,.1);
-      color: var(--fg);
-      transition: background .3s, color .3s;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    section { margin-bottom: 3rem; }
-
-    h2 {
-      color: var(--title-color);
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: .5rem;
-    }
-
-    .project {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-left: 5px solid var(--primary);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      transition: background .3s, box-shadow .3s;
-    }
-    .project h3 {
-      margin-top: 0;
-      margin-bottom: .5rem;
-      color: var(--card-title-color);
-    }
-    .project p { margin: .5rem 0; }
-    .project a {
-      display: inline-block;
-      margin-top: .5rem;
-      color: var(--header-fg);
-      background: var(--primary);
-      padding: .4rem 1rem;
-      border-radius: 4px;
-      text-decoration: none;
-      transition: background .3s;
-    }
-    .project a:hover { background: var(--header-fg); }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: var(--footer-bg);
-      font-size: .9rem;
-      transition: background .3s;
-    }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      .project { padding: 1rem; }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Paulo Alvarez, Data Analyst y Data Scientist. Bachiller en Ingeniería Geofísica con experiencia aplicando datos a operaciones reales. Proyectos de Machine Learning con demos que corren en el navegador.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#151B22">
+  <title>Paulo Alvarez | Data Scientist</title>
+  <link rel="alternate" hreflang="es" href="https://dixonpa.github.io/">
+  <link rel="alternate" hreflang="en" href="https://dixonpa.github.io/en/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/site.js" defer></script>
 </head>
 <body>
-  <header>
-    <button class="theme-toggle" id="toggleTheme">🌙</button>
-    <h1>Paulo Alvarez</h1>
-    <p>Ingeniero Geofísico | Data Scientist | JAVA & SQL </p>
-    <img src="https://media.licdn.com/dms/image/v2/D4E03AQEx_8EEuuYjoA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1695695021096?e=1752105600&v=beta&t=yt6y8sMkMhFTX4wIEFVV1O4wbnfCiY4BFryt0BENRjc" alt="Foto de Dixon P." class="photo">
+  <div class="backdrop" aria-hidden="true">
+    <svg viewBox="0 0 1200 900" preserveAspectRatio="none" focusable="false"></svg>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-id">
+        <img src="https://github.com/dixonpa.png" alt="Foto de Paulo Alvarez" width="52" height="52">
+        <p><strong>Data Analyst y Data Scientist</strong>Bachiller en Ingeniería Geofísica</p>
+      </div>
+      <h1>Paulo Alvarez</h1>
+      <p class="intro">Uso los datos para que una operación cueste menos y decida mejor. Vengo de la geofísica, donde aprendí a controlar la calidad de las mediciones y a encontrar anomalías; hoy lo aplico con Python, SQL y Machine Learning.</p>
+      <ul class="hero-links">
+        <li><a href="#proyectos">Proyectos y demos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="https://www.linkedin.com/in/paulocealva">LinkedIn</a></li>
+        <li><a href="https://github.com/dixonpa">GitHub</a></li>
+        <li><a href="en/" hreflang="en" lang="en">English</a></li>
+      </ul>
+    </div>
   </header>
 
-  <div class="container">
-    <section id="sobre-mi">
-      <h2>Sobre mí</h2>
-      <p>
-        Soy ingeniero geofísico con experiencia en análisis de datos, desarrollo backend en Java y proyectos de ciencia de datos aplicados a negocios. Me apasiona usar la inteligencia artificial y la programación para resolver problemas reales.
-      </p>
+  <main class="wrap">
+    <section id="sobre-mi" class="about" aria-labelledby="t-sobre-mi">
+      <h2 id="t-sobre-mi">Sobre mí</h2>
+      <p>Soy bachiller en Ingeniería Geofísica. Mi base cuantitativa viene de trabajar con mediciones de campo: controlar su calidad, detectar anomalías y sacar conclusiones de señales con ruido. La complementé con el programa de Data Science de TripleTen.</p>
+      <p>Antes de trabajar formalmente en datos, ya los usaba para resolver problemas de operación en construcción y logística. Proyecté la demanda de materiales y propuse consolidar pedidos, lo que bajó el costo unitario cerca de 10%. Armé una referencia de precios de mercado con web scraping en Python, encontré compras muy por encima de esa referencia y el hallazgo llevó a revisar las compras de otros proyectos. También revisé supuestos de presupuestos de obra con ingenieros y arquitectos.</p>
+      <p>Esa experiencia me enseñó a mirar el proceso que hay detrás de los números y a entregar recomendaciones que la gente de operación puede aplicar. Quiero seguir creciendo en análisis de datos, Machine Learning e IA aplicada a problemas de negocio.</p>
+      <h3 class="subhead">Cómo trabajo</h3>
+      <ol class="steps">
+        <li>Entender el problema</li>
+        <li>Identificar qué datos importan</li>
+        <li>Cuestionar su calidad</li>
+        <li>Buscar patrones o inconsistencias</li>
+        <li>Relacionarlos con el proceso</li>
+        <li>Recomendar con números y medir el resultado</li>
+      </ol>
     </section>
-    <section id="habilidades">
-      <h2>🧠 Habilidades de Data Scientist</h2>
-      <ul>
-        <li>✔️ Python (pandas, numpy, scikit-learn, matplotlib, seaborn)</li>
-        <li>✔️ Machine Learning Supervisado y No Supervisado</li>
-        <li>✔️ NLP con BERT, TF-IDF, spaCy</li>
-        <li>✔️ Visualización de datos (Tableau, Power BI)</li>
-        <li>✔️ SQL y manejo de bases de datos</li>
-        <li>✔️ Modelos de predicción, segmentación y detección de anomalías</li>
-        <li>✔️ ETL - Pipelines</li>
-        <li>✔️ Apachae Spark</li>
-        <li>✔️ Git, GitHub, y despliegue en GitHub Pages</li>
+
+    <section id="habilidades" aria-labelledby="t-habilidades">
+      <h2 id="t-habilidades">Habilidades</h2>
+      <div class="skills">
+        <div>
+          <h3>Aplicadas en el trabajo</h3>
+          <ul>
+            <li>Excel: consumos, compras, presupuestos y matrices de riesgo</li>
+            <li>Web scraping con Python (BeautifulSoup)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>En formación y proyectos</h3>
+          <ul>
+            <li>Python: pandas y NumPy</li>
+            <li>SQL: JOIN y funciones de ventana</li>
+            <li>Análisis exploratorio y visualización</li>
+            <li>Machine Learning: scikit-learn y XGBoost</li>
+            <li>Evaluación de modelos</li>
+            <li>Jupyter, Git y GitHub</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Profundizando ahora</h3>
+          <ul>
+            <li>Power BI: Power Query, modelo de datos, DAX y dashboards</li>
+            <li>IA generativa aplicada a datos: uso modelos de lenguaje para acelerar el análisis, escribir y revisar código y SQL, y resumir hallazgos</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Cómo me desenvuelvo</h3>
+          <ul>
+            <li>Comunico resultados con números a personas no técnicas: ingenieros, arquitectos y jefaturas</li>
+            <li>Trabajo bajo presión y con plazos ajustados, en obras en marcha</li>
+            <li>Tomo la iniciativa: propongo análisis aunque no sean parte de mi cargo</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Idiomas</h3>
+          <ul>
+            <li>Español: nativo</li>
+            <li>Inglés: intermedio. Leo documentación técnica, cursos y artículos en inglés</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Otros</h3>
+          <ul>
+            <li>PySpark y Big Data</li>
+            <li>Java y Spring Boot</li>
+            <li>Seguridad y salud en el trabajo: IPERC y Ley 29783</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" aria-labelledby="t-proyectos">
+      <h2 id="t-proyectos">Proyectos</h2>
+      <p class="section-hook">No tienes que creerme. Pruébalo tú mismo.</p>
+      <p class="section-lead">Cada proyecto incluye una demo interactiva con los datos y el modelo reales del notebook. Cambia los parámetros, prueba distintos casos y observa cómo responde. ¿Quieres saber qué hay detrás? El código completo está en GitHub.</p>
+
+      <article class="project" id="oilygiant" aria-labelledby="t-oily">
+        <div class="project-text">
+          <h3 id="t-oily">OilyGiant: dónde abrir 200 pozos de petróleo</h3>
+          <p class="stack">Python, regresión lineal, bootstrapping</p>
+          <p>Predije las reservas de tres regiones con regresión lineal y simulé 1000 exploraciones con bootstrapping para estimar la ganancia y el riesgo de cada una.</p>
+          <p class="result">Región recomendada: la 1, con 4.8 millones USD de ganancia promedio y 2% de riesgo de pérdida.</p>
+          <a class="repo" href="https://github.com/dixonpa/Onlygiant">Ver el código en GitHub</a>
+        </div>
+
+        <div class="demo" data-demo="oilygiant" aria-busy="true">
+          <p class="demo-hint">Elige una región y cambia cuántos puntos se exploran y cuántos pozos se abren. Fíjate si el riesgo de pérdida queda por debajo de 2.5%: esa fue la regla para decidir.</p>
+          <div class="demo-controls">
+            <fieldset class="seg" data-input="region">
+              <legend>Región</legend>
+              <label><input type="radio" name="oily-region" value="0"><span>0</span></label>
+              <label><input type="radio" name="oily-region" value="1" checked><span>1</span></label>
+              <label><input type="radio" name="oily-region" value="2"><span>2</span></label>
+            </fieldset>
+            <label class="range">
+              <span class="range-head"><span>Puntos explorados</span><output data-out="points">500</output></span>
+              <input type="range" data-input="points" min="250" max="1000" step="50" value="500">
+            </label>
+            <label class="range">
+              <span class="range-head"><span>Pozos que se abren</span><output data-out="wells">200</output></span>
+              <input type="range" data-input="wells" min="50" max="250" step="10" value="200">
+            </label>
+            <button type="button" class="btn" data-action="rerun">Simular de nuevo</button>
+          </div>
+
+          <div class="demo-output">
+            <dl class="readout">
+              <div><dt>Ganancia promedio</dt><dd data-out="mean">–</dd></div>
+              <div><dt>Intervalo 95%</dt><dd data-out="ci">–</dd></div>
+              <div><dt>Riesgo de pérdida</dt><dd data-out="risk">–</dd></div>
+            </dl>
+            <p class="verdict" data-out="verdict"></p>
+            <div class="chart" data-chart="hist"></div>
+            <p class="chart-note">Ganancia en 1000 simulaciones, en millones de USD. Cada pozo cuesta 0.5 M USD y 1000 barriles dejan 4500 USD.</p>
+          </div>
+          <p class="demo-foot" data-out="foot">Cargando los datos de validación…</p>
+        </div>
+      </article>
+
+      <article class="project" id="telecom" aria-labelledby="t-telecom">
+        <div class="project-text">
+          <h3 id="t-telecom">Telecom: clientes que van a cancelar</h3>
+          <p class="stack">Python, scikit-learn, XGBoost</p>
+          <p>Uní cuatro tablas de clientes, analicé qué perfiles cancelan más y comparé modelos con validación cruzada dentro de Pipelines. Ajusté XGBoost con GridSearch y el umbral de decisión.</p>
+          <p class="result">AUC-ROC de 0.91: encuentra a 3 de cada 4 clientes que se van.</p>
+          <a class="repo" href="https://github.com/dixonpa/telecom">Ver el código en GitHub</a>
+        </div>
+
+        <div class="demo" data-demo="telecom" aria-busy="true">
+          <p class="demo-hint">Arma un cliente y mira qué tan probable es que cancele. Prueba alargar el contrato o sumarle meses como cliente y verás cómo baja el riesgo.</p>
+          <div class="demo-controls">
+            <div class="presets" role="group" aria-label="Ejemplos">
+              <button type="button" class="chip" data-preset="risky">Cliente nuevo con fibra</button>
+              <button type="button" class="chip" data-preset="loyal">Cliente fiel, contrato de 2 años</button>
+            </div>
+            <fieldset class="seg" data-input="Type">
+              <legend>Contrato</legend>
+              <label><input type="radio" name="tel-type" value="Month-to-month" checked><span>Mes a mes</span></label>
+              <label><input type="radio" name="tel-type" value="One year"><span>1 año</span></label>
+              <label><input type="radio" name="tel-type" value="Two year"><span>2 años</span></label>
+            </fieldset>
+            <label class="range">
+              <span class="range-head"><span>Meses como cliente</span><output data-out="tenure">12</output></span>
+              <input type="range" data-input="tenure" min="0" max="72" step="1" value="12">
+            </label>
+            <label class="range">
+              <span class="range-head"><span>Cargo mensual</span><output data-out="monthly">70 USD</output></span>
+              <input type="range" data-input="monthly" min="18" max="120" step="1" value="70">
+            </label>
+            <fieldset class="seg" data-input="InternetService">
+              <legend>Internet</legend>
+              <label><input type="radio" name="tel-net" value="Fiber optic" checked><span>Fibra</span></label>
+              <label><input type="radio" name="tel-net" value="DSL"><span>DSL</span></label>
+              <label><input type="radio" name="tel-net" value="No"><span>Sin internet</span></label>
+            </fieldset>
+            <fieldset class="checks" data-group="services">
+              <legend>Servicios de internet</legend>
+              <label><input type="checkbox" value="OnlineSecurity"><span>Seguridad</span></label>
+              <label><input type="checkbox" value="OnlineBackup"><span>Respaldo</span></label>
+              <label><input type="checkbox" value="DeviceProtection"><span>Protección de equipo</span></label>
+              <label><input type="checkbox" value="TechSupport"><span>Soporte técnico</span></label>
+              <label><input type="checkbox" value="StreamingTV"><span>TV</span></label>
+              <label><input type="checkbox" value="StreamingMovies"><span>Películas</span></label>
+            </fieldset>
+            <label class="select">
+              <span>Forma de pago</span>
+              <select data-input="PaymentMethod">
+                <option value="Electronic check">Cheque electrónico</option>
+                <option value="Mailed check">Cheque por correo</option>
+                <option value="Bank transfer (automatic)">Transferencia automática</option>
+                <option value="Credit card (automatic)">Tarjeta automática</option>
+              </select>
+            </label>
+            <details class="more">
+              <summary>Más datos del cliente</summary>
+              <fieldset class="checks" data-group="flags">
+                <legend class="sr-only">Datos del cliente</legend>
+                <label><input type="checkbox" value="PaperlessBilling" checked><span>Factura electrónica</span></label>
+                <label><input type="checkbox" value="has_phone" checked><span>Línea telefónica</span></label>
+                <label><input type="checkbox" value="MultipleLines"><span>Varias líneas</span></label>
+                <label><input type="checkbox" value="SeniorCitizen"><span>Adulto mayor</span></label>
+                <label><input type="checkbox" value="Partner"><span>Tiene pareja</span></label>
+                <label><input type="checkbox" value="Dependents"><span>Tiene dependientes</span></label>
+              </fieldset>
+              <fieldset class="seg" data-input="gender">
+                <legend>Género</legend>
+                <label><input type="radio" name="tel-gender" value="Female" checked><span>Mujer</span></label>
+                <label><input type="radio" name="tel-gender" value="Male"><span>Hombre</span></label>
+              </fieldset>
+            </details>
+          </div>
+
+          <div class="demo-output">
+            <div class="score">
+              <p class="score-label">Probabilidad de cancelar</p>
+              <p class="score-value" data-out="proba">–</p>
+            </div>
+            <div class="meter" data-meter>
+              <div class="meter-fill"></div>
+              <div class="pick pick-threshold"><span>umbral</span></div>
+            </div>
+            <div class="meter-scale" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+            <p class="verdict" data-out="verdict"></p>
+          </div>
+          <p class="demo-foot" data-out="foot">Cargando el modelo…</p>
+        </div>
+      </article>
+
+      <article class="project" id="fraude" aria-labelledby="t-fraude">
+        <div class="project-text">
+          <h3 id="t-fraude">Detección de fraude con tarjeta de crédito</h3>
+          <p class="stack">Python, scikit-learn, XGBoost</p>
+          <p>1.8 millones de transacciones donde solo el 0.52% son fraude. Hice el análisis exploratorio, creé variables de hora, edad y distancia, validé respetando las fechas y comparé cuatro modelos.</p>
+          <p class="result">Random Forest con AUC-PR de 0.88: detecta el 85% de los fraudes.</p>
+          <a class="repo" href="https://github.com/dixonpa/FraudDetection">Ver el código en GitHub</a>
+        </div>
+
+        <div class="demo demo-fraud" data-demo="fraud" aria-busy="true">
+          <p class="demo-hint">Primero mira a qué hora y con qué montos se concentra el fraude. Después prueba una transacción tuya o carga un caso real y compara lo que dice el modelo con lo que pasó.</p>
+          <div class="demo-charts">
+            <div class="tabs" role="tablist" aria-label="Tasa de fraude por">
+              <button type="button" role="tab" aria-selected="true" data-tab="hour">Hora</button>
+              <button type="button" role="tab" aria-selected="false" data-tab="amount">Monto</button>
+              <button type="button" role="tab" aria-selected="false" data-tab="category">Categoría</button>
+            </div>
+            <div class="chart" data-chart="fraud" role="tabpanel"></div>
+            <p class="chart-note" data-out="chartnote"></p>
+          </div>
+
+          <div class="demo-probe">
+            <div class="probe-inputs">
+            <h4>Prueba una transacción</h4>
+            <div class="presets" role="group" aria-label="Ejemplos reales">
+              <button type="button" class="chip" data-example="1">Fraude real</button>
+              <button type="button" class="chip" data-example="0">Compra normal real</button>
+            </div>
+            <label class="range">
+              <span class="range-head"><span>Monto</span><output data-out="amt">48 USD</output></span>
+              <input type="range" data-input="amt" min="0" max="1000" step="1" value="0">
+            </label>
+            <label class="range">
+              <span class="range-head"><span>Hora</span><output data-out="hour">14:00</output></span>
+              <input type="range" data-input="hour" min="0" max="23" step="1" value="14">
+            </label>
+            <label class="range">
+              <span class="range-head"><span>Edad del cliente</span><output data-out="age">44 años</output></span>
+              <input type="range" data-input="age" min="18" max="90" step="1" value="44">
+            </label>
+            <label class="select">
+              <span>Categoría</span>
+              <select data-input="category"></select>
+            </label>
+            </div>
+            <div class="probe-result">
+            <div class="score score-small">
+              <p class="score-label">Probabilidad de fraude</p>
+              <p class="score-value" data-out="proba">–</p>
+            </div>
+            <div class="meter" data-meter>
+              <div class="meter-fill"></div>
+              <div class="pick pick-threshold"><span>umbral</span></div>
+            </div>
+            <p class="verdict" data-out="verdict"></p>
+            </div>
+          </div>
+          <p class="demo-foot" data-out="foot">Cargando los datos…</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="contacto" class="contact" aria-labelledby="t-contacto">
+      <h2 id="t-contacto">Contacto</h2>
+      <p>Si tu equipo necesita a alguien que entienda el problema antes de abrir el notebook, conversemos. Vivo en Arequipa y estoy disponible para trabajo remoto, presencial en Perú o para mudarme a otro país si el puesto lo requiere.</p>
+      <ul class="contact-list">
+        <li>
+          <a href="mailto:palvareza17@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+            palvareza17@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/paulocealva">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="solid"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg>
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/dixonpa">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="solid"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://wa.link/joofbw">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/></svg>
+            WhatsApp
+          </a>
+        </li>
       </ul>
-    </section>    
-    <section id="proyectos">
-      <h2>Proyectos destacados</h2>
-
-      <div class="project">
-        <h3>📊 Telecom - Predicción de Cancelación de Clientes</h3>
-        <p><strong>Objetivo:</strong> Predecir qué clientes están en riesgo de cancelar sus servicios.</p>
-        <p><strong>Descripción:</strong> Modelos de clasificación (Random Forest, XGBoost, LightGBM) con preprocesamiento, oversampling y análisis de importancia.</p>
-        <p><strong>Resultados:</strong> F1-score de 0.89 y AUC-ROC de 0.93 con LightGBM.</p>
-        <a href="https://github.com/dixonpa/telecom" target="_blank">Ver código en GitHub</a>
-      </div>
-
-      <div class="project">
-        <h3>🛢️ Onlygiant - Selección del Mejor Pozo</h3>
-        <p><strong>Objetivo:</strong> Identificar el pozo más rentable según VPN y TIR.</p>
-        <p><strong>Descripción:</strong> Cálculo de reservas in situ y métricas económicas; análisis comparativo.</p>
-        <p><strong>Resultados:</strong> Pozo seleccionado con TIR >30% y VPN positivo.</p>
-        <a href="https://github.com/dixonpa/Onlygiant" target="_blank">Ver código en GitHub</a>
-      </div>
-
-      <!-- Más proyectos aquí -->
     </section>
+  </main>
 
-    <section id="contacto">
-      <h2>📬 Contacto</h2>
-      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
-        <a href="https://github.com/dixonpa" target="_blank" title="GitHub">
-          <i class="fab fa-github fa-2x"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/paulocealva/" target="_blank" title="LinkedIn">
-          <i class="fab fa-linkedin fa-2x" style="color: #0A66C2;"></i>
-        </a>
-        <a href="mailto:palvareza17@gmail.com" title="Gmail">
-          <i class="fas fa-envelope fa-2x" style="color: #c71610;"></i>
-        </a>
-        <a href="https://wa.link/joofbw" target="_blank" title="WhatsApp">
-          <i class="fab fa-whatsapp fa-2x" style="color: #25D366;"></i>
-        </a>
-      </div>
-    </section>
-    
-  </div>
-  
   <footer>
-    © 2025 Dixon P. | palvareza17@gmail.com
+    <div class="wrap">© 2026 Paulo Alvarez</div>
   </footer>
 
-  <script>
-    const toggleBtn = document.getElementById('toggleTheme');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    toggleBtn.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
-
-    toggleBtn.addEventListener('click', () => {
-      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-      toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
-    });
-  </script>
+  <div class="tooltip" role="status" hidden></div>
 </body>
 </html>

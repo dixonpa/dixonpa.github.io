@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Paulo Alvarez, Data Analyst and Data Scientist. B.S. in Geophysical Engineering with experience applying data to real operations. Machine Learning projects with demos that run in the browser.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#151B22">
+  <title>Paulo Alvarez | Data Scientist</title>
+  <link rel="alternate" hreflang="es" href="https://dixonpa.github.io/">
+  <link rel="alternate" hreflang="en" href="https://dixonpa.github.io/en/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <script src="../js/site.js" defer></script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <svg viewBox="0 0 1200 900" preserveAspectRatio="none" focusable="false"></svg>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-id">
+        <img src="https://github.com/dixonpa.png" alt="Photo of Paulo Alvarez" width="52" height="52">
+        <p><strong>Data Analyst and Data Scientist</strong>B.S. in Geophysical Engineering</p>
+      </div>
+      <h1>Paulo Alvarez</h1>
+      <p class="intro">I use data to help operations spend less and decide better. I come from geophysics, where I learned to check the quality of measurements and find anomalies; today I apply that with Python, SQL and Machine Learning.</p>
+      <ul class="hero-links">
+        <li><a href="#projects">Projects and demos</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/paulocealva">LinkedIn</a></li>
+        <li><a href="https://github.com/dixonpa">GitHub</a></li>
+        <li><a href="../" hreflang="es" lang="es">Español</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="about" class="about" aria-labelledby="t-about">
+      <h2 id="t-about">About me</h2>
+      <p>I hold a B.S. in Geophysical Engineering. My quantitative background comes from working with field measurements: checking their quality, detecting anomalies and drawing conclusions from noisy signals. I built on it with TripleTen's Data Science program.</p>
+      <p>Before working formally in data, I was already using it to solve operational problems in construction and logistics. I forecast material demand and proposed consolidating orders, which cut the unit cost by about 10%. I built a market price reference with web scraping in Python, found purchases far above that reference, and the finding led to a review of purchases in other projects. I also reviewed construction budget assumptions with engineers and architects.</p>
+      <p>That experience taught me to look at the process behind the numbers and to deliver recommendations that operations teams can actually apply. I want to keep growing in data analysis, Machine Learning and AI applied to business problems.</p>
+      <h3 class="subhead">How I work</h3>
+      <ol class="steps">
+        <li>Understand the problem</li>
+        <li>Identify which data matters</li>
+        <li>Question its quality</li>
+        <li>Look for patterns or inconsistencies</li>
+        <li>Connect them to the process</li>
+        <li>Recommend with numbers and measure the result</li>
+      </ol>
+    </section>
+
+    <section id="skills" aria-labelledby="t-skills">
+      <h2 id="t-skills">Skills</h2>
+      <div class="skills">
+        <div>
+          <h3>Applied at work</h3>
+          <ul>
+            <li>Excel: material usage, purchasing, budgets and risk matrices</li>
+            <li>Web scraping with Python (BeautifulSoup)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Training and projects</h3>
+          <ul>
+            <li>Python: pandas and NumPy</li>
+            <li>SQL: JOINs and window functions</li>
+            <li>Exploratory analysis and visualization</li>
+            <li>Machine Learning: scikit-learn and XGBoost</li>
+            <li>Model evaluation</li>
+            <li>Jupyter, Git and GitHub</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Going deeper now</h3>
+          <ul>
+            <li>Power BI: Power Query, data modeling, DAX and dashboards</li>
+            <li>Generative AI for data work: I use language models to speed up analysis, write and review code and SQL, and summarize findings</li>
+          </ul>
+        </div>
+        <div>
+          <h3>How I work with people</h3>
+          <ul>
+            <li>I communicate results with numbers to non-technical people: engineers, architects and managers</li>
+            <li>I work under pressure and on tight deadlines, on active construction sites</li>
+            <li>I take initiative: I propose analyses even when they are not part of my role</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Languages</h3>
+          <ul>
+            <li>Spanish: native</li>
+            <li>English: intermediate. I read technical documentation, courses and articles in English</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Other</h3>
+          <ul>
+            <li>PySpark and Big Data</li>
+            <li>Java and Spring Boot</li>
+            <li>Occupational health and safety: hazard and risk assessment (IPERC), Peruvian Law 29783</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="t-projects">
+      <h2 id="t-projects">Projects</h2>
+      <p class="section-hook">Don't take my word for it. Try it yourself.</p>
+      <p class="section-lead">Each project includes an interactive demo with the real data and model from the notebook. Change the parameters, try different cases and see how it responds. Want to know what's behind it? The full code is on GitHub.</p>
+
+      <article class="project" id="oilygiant" aria-labelledby="t-oily">
+        <div class="project-text">
+          <h3 id="t-oily">OilyGiant: where to open 200 oil wells</h3>
+          <p class="stack">Python, linear regression, bootstrapping</p>
+          <p>I predicted the reserves of three regions with linear regression and simulated 1000 explorations with bootstrapping to estimate the profit and risk of each one.</p>
+          <p class="result">Recommended region: region 1, with 4.8 million USD average profit and a 2% risk of loss.</p>
+          <a class="repo" href="https://github.com/dixonpa/Onlygiant">See the code on GitHub</a>
+        </div>
+
+        <div class="demo" data-demo="oilygiant" aria-busy="true">
+          <p class="demo-hint">Pick a region and change how many points are explored and how many wells are opened. Check whether the risk of loss stays below 2.5%: that was the decision rule.</p>
+          <div class="demo-controls">
+            <fieldset class="seg" data-input="region">
+              <legend>Region</legend>
+              <label><input type="radio" name="oily-region" value="0"><span>0</span></label>
+              <label><input type="radio" name="oily-region" value="1" checked><span>1</span></label>
+              <label><input type="radio" name="oily-region" value="2"><span>2</span></label>
+            </fieldset>
+            <label class="range">
+              <span class="range-head"><span>Points explored</span><output data-out="points">500</output></span>
+              <input type="range" data-input="points" min="250" max="1000" step="50" value="500">
+            </label>
+            <label class="range">
+              <span class="range-head"><span>Wells opened</span><output data-out="wells">200</output></span>
+              <input type="range" data-input="wells" min="50" max="250" step="10" value="200">
+            </label>
+            <button type="button" class="btn" data-action="rerun">Simulate again</button>
+          </div>
+
+          <div class="demo-output">
+            <dl class="readout">
+              <div><dt>Average profit</dt><dd data-out="mean">–</dd></div>
+              <div><dt>95% interval</dt><dd data-out="ci">–</dd></div>
+              <div><dt>Risk of loss</dt><dd data-out="risk">–</dd></div>
+            </dl>
+            <p class="verdict" data-out="verdict"></p>
+            <div class="chart" data-chart="hist"></div>
+            <p class="chart-note">Profit across 1000 simulations, in millions of USD. Each well costs 0.5 M USD and 1000 barrels bring in 4500 USD.</p>
+          </div>
+          <p class="demo-foot" data-out="foot">Loading the validation data…</p>
+        </div>
+      </article>
+
+      <article class="project" id="telecom" aria-labelledby="t-telecom">
+        <div class="project-text">
+          <h3 id="t-telecom">Telecom: customers about to cancel</h3>
+          <p class="stack">Python, scikit-learn, XGBoost</p>
+          <p>I joined four customer tables, analyzed which profiles cancel the most and compared models with cross-validation inside Pipelines. I tuned XGBoost with GridSearch and adjusted the decision threshold.</p>
+          <p class="result">ROC AUC of 0.91: it finds 3 out of 4 customers who leave.</p>
+          <a class="repo" href="https://github.com/dixonpa/telecom">See the code on GitHub</a>
+        </div>
+
+        <div class="demo" data-demo="telecom" aria-busy="true">
+          <p class="demo-hint">Build a customer and see how likely they are to cancel. Try a longer contract or more months as a customer and watch the risk drop.</p>
+          <div class="demo-controls">
+            <div class="presets" role="group" aria-label="Examples">
+              <button type="button" class="chip" data-preset="risky">New customer with fiber</button>
+              <button type="button" class="chip" data-preset="loyal">Loyal customer, 2-year contract</button>
+            </div>
+            <fieldset class="seg" data-input="Type">
+              <legend>Contract</legend>
+              <label><input type="radio" name="tel-type" value="Month-to-month" checked><span>Monthly</span></label>
+              <label><input type="radio" name="tel-type" value="One year"><span>1 year</span></label>
+              <label><input type="radio" name="tel-type" value="Two year"><span>2 years</span></label>
+            </fieldset>
+            <label class="range">
+              <span class="range-head"><span>Months as a customer</span><output data-out="tenure">12</output></span>
+              <input type="range" data-input="tenure" min="0" max="72" step="1" value="12">
+            </label>
+            <label class="range">
+              <span class="range-head"><span>Monthly charge</span><output data-out="monthly">70 USD</output></span>
+              <input type="range" data-input="monthly" min="18" max="120" step="1" value="70">
+            </label>
+            <fieldset class="seg" data-input="InternetService">
+              <legend>Internet</legend>
+              <label><input type="radio" name="tel-net" value="Fiber optic" checked><span>Fiber</span></label>
+              <label><input type="radio" name="tel-net" value="DSL"><span>DSL</span></label>
+              <label><input type="radio" name="tel-net" value="No"><span>No internet</span></label>
+            </fieldset>
+            <fieldset class="checks" data-group="services">
+              <legend>Internet services</legend>
+              <label><input type="checkbox" value="OnlineSecurity"><span>Security</span></label>
+              <label><input type="checkbox" value="OnlineBackup"><span>Backup</span></label>
+              <label><input type="checkbox" value="DeviceProtection"><span>Device protection</span></label>
+              <label><input type="checkbox" value="TechSupport"><span>Tech support</span></label>
+              <label><input type="checkbox" value="StreamingTV"><span>TV</span></label>
+              <label><input type="checkbox" value="StreamingMovies"><span>Movies</span></label>
+            </fieldset>
+            <label class="select">
+              <span>Payment method</span>
+              <select data-input="PaymentMethod">
+                <option value="Electronic check">Electronic check</option>
+                <option value="Mailed check">Mailed check</option>
+                <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+                <option value="Credit card (automatic)">Credit card (automatic)</option>
+              </select>
+            </label>
+            <details class="more">
+              <summary>More customer details</summary>
+              <fieldset class="checks" data-group="flags">
+                <legend class="sr-only">Customer details</legend>
+                <label><input type="checkbox" value="PaperlessBilling" checked><span>Paperless billing</span></label>
+                <label><input type="checkbox" value="has_phone" checked><span>Phone line</span></label>
+                <label><input type="checkbox" value="MultipleLines"><span>Multiple lines</span></label>
+                <label><input type="checkbox" value="SeniorCitizen"><span>Senior citizen</span></label>
+                <label><input type="checkbox" value="Partner"><span>Has a partner</span></label>
+                <label><input type="checkbox" value="Dependents"><span>Has dependents</span></label>
+              </fieldset>
+              <fieldset class="seg" data-input="gender">
+                <legend>Gender</legend>
+                <label><input type="radio" name="tel-gender" value="Female" checked><span>Female</span></label>
+                <label><input type="radio" name="tel-gender" value="Male"><span>Male</span></label>
+              </fieldset>
+            </details>
+          </div>
+
+          <div class="demo-output">
+            <div class="score">
+              <p class="score-label">Probability of canceling</p>
+              <p class="score-value" data-out="proba">–</p>
+            </div>
+            <div class="meter" data-meter>
+              <div class="meter-fill"></div>
+              <div class="pick pick-threshold"><span>threshold</span></div>
+            </div>
+            <div class="meter-scale" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+            <p class="verdict" data-out="verdict"></p>
+          </div>
+          <p class="demo-foot" data-out="foot">Loading the model…</p>
+        </div>
+      </article>
+
+      <article class="project" id="fraud" aria-labelledby="t-fraud">
+        <div class="project-text">
+          <h3 id="t-fraud">Credit card fraud detection</h3>
+          <p class="stack">Python, scikit-learn, XGBoost</p>
+          <p>1.8 million transactions where only 0.52% are fraud. I did the exploratory analysis, created hour, age and distance features, validated in time order and compared four models.</p>
+          <p class="result">Random Forest with a PR AUC of 0.88: it catches 85% of fraud.</p>
+          <a class="repo" href="https://github.com/dixonpa/FraudDetection">See the code on GitHub</a>
+        </div>
+
+        <div class="demo demo-fraud" data-demo="fraud" aria-busy="true">
+          <p class="demo-hint">First, look at which hours and amounts concentrate the fraud. Then try your own transaction or load a real case, and compare what the model says with what actually happened.</p>
+          <div class="demo-charts">
+            <div class="tabs" role="tablist" aria-label="Fraud rate by">
+              <button type="button" role="tab" aria-selected="true" data-tab="hour">Hour</button>
+              <button type="button" role="tab" aria-selected="false" data-tab="amount">Amount</button>
+              <button type="button" role="tab" aria-selected="false" data-tab="category">Category</button>
+            </div>
+            <div class="chart" data-chart="fraud" role="tabpanel"></div>
+            <p class="chart-note" data-out="chartnote"></p>
+          </div>
+
+          <div class="demo-probe">
+            <div class="probe-inputs">
+            <h4>Try a transaction</h4>
+            <div class="presets" role="group" aria-label="Real examples">
+              <button type="button" class="chip" data-example="1">Real fraud</button>
+              <button type="button" class="chip" data-example="0">Real normal purchase</button>
+            </div>
+            <label class="range">
+              <span class="range-head"><span>Amount</span><output data-out="amt">48 USD</output></span>
+              <input type="range" data-input="amt" min="0" max="1000" step="1" value="0">
+            </label>
+            <label class="range">
+              <span class="range-head"><span>Hour</span><output data-out="hour">14:00</output></span>
+              <input type="range" data-input="hour" min="0" max="23" step="1" value="14">
+            </label>
+            <label class="range">
+              <span class="range-head"><span>Customer age</span><output data-out="age">44 years</output></span>
+              <input type="range" data-input="age" min="18" max="90" step="1" value="44">
+            </label>
+            <label class="select">
+              <span>Category</span>
+              <select data-input="category"></select>
+            </label>
+            </div>
+            <div class="probe-result">
+            <div class="score score-small">
+              <p class="score-label">Probability of fraud</p>
+              <p class="score-value" data-out="proba">–</p>
+            </div>
+            <div class="meter" data-meter>
+              <div class="meter-fill"></div>
+              <div class="pick pick-threshold"><span>threshold</span></div>
+            </div>
+            <p class="verdict" data-out="verdict"></p>
+            </div>
+          </div>
+          <p class="demo-foot" data-out="foot">Loading the data…</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="t-contact">
+      <h2 id="t-contact">Contact</h2>
+      <p>If your team needs someone who understands the problem before opening the notebook, let's talk. I live in Arequipa, Peru, and I'm available for remote work, on-site work in Peru, or relocating to another country if the role requires it.</p>
+      <ul class="contact-list">
+        <li>
+          <a href="mailto:palvareza17@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+            palvareza17@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/paulocealva">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="solid"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg>
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/dixonpa">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="solid"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://wa.link/joofbw">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/></svg>
+            WhatsApp
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Paulo Alvarez</div>
+  </footer>
+
+  <div class="tooltip" role="status" hidden></div>
+</body>
+</html>
