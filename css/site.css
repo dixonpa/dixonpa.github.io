@@ -543,15 +543,15 @@ select {
 .skills {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem 3rem;
+  gap: 2.5rem 3rem;
   margin-top: 1.75rem;
 }
 .skills h3 { margin: 0 0 .625rem; font-size: 1rem; color: var(--ochre); font-weight: 500; }
 .skills ul { margin: 0; padding: 0; list-style: none; }
 .skills li { padding: .4375rem 0; border-top: 1px solid var(--line); }
-.skills h3.skills-later { margin-top: 1.75rem; }
 .learning { margin: 2rem 0 0; color: var(--rock); max-width: var(--measure); }
 
+.about .steps-note { margin: -.25rem 0 1rem; color: var(--rock); font-size: .9375rem; }
 .subhead { margin: 2.5rem 0 1rem; font-size: 1rem; font-weight: 500; color: var(--ochre); }
 
 /* Cómo trabajo: es una secuencia real, por eso va numerada */
