@@ -120,6 +120,38 @@ function setVerdict(node, ok, text) {
   node.querySelector("span").textContent = text;
 }
 
+/* ---------------- Selector de idioma ---------------- */
+
+// Al cambiar de idioma, sigue en la misma sección. Los id cambian entre la página
+// en español y la de inglés, así que uso una tabla de equivalencias [es, en].
+const SECTION_PAIRS = [
+  ["sobre-mi", "about"],
+  ["habilidades", "skills"],
+  ["proyectos", "projects"],
+  ["oilygiant", "oilygiant"],
+  ["telecom", "telecom"],
+  ["fraude", "fraud"],
+  ["contacto", "contact"],
+];
+
+document.querySelectorAll(".lang-switch a:not([aria-current])").forEach((link) => {
+  link.addEventListener("click", () => {
+    const here = LANG === "es" ? 0 : 1;
+    const present = SECTION_PAIRS.filter((pair) => document.getElementById(pair[here]));
+    let current = null;
+    for (const pair of present) {
+      // la sección actual es la última cuyo inicio ya pasó el tercio superior de la pantalla
+      if (document.getElementById(pair[here]).getBoundingClientRect().top <= window.innerHeight / 3) current = pair;
+    }
+    // al final de la página la última sección (Contacto) nunca llega a ese tercio
+    const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+    if (atBottom && window.scrollY > 0) current = present[present.length - 1];
+    const url = new URL(link.href);
+    url.hash = current ? current[1 - here] : "";
+    link.href = url.href;
+  });
+});
+
 /* ---------------- Fondo sísmico ---------------- */
 
 // Registro de varias trazas, como un sismograma de estaciones a distinta distancia:
@@ -651,6 +683,18 @@ const observer = new IntersectionObserver((entries) => {
 }, { rootMargin: "600px 0px" });
 const pending = [...document.querySelectorAll("[data-demo]")];
 pending.forEach((demo) => observer.observe(demo));
+
+// Si la página se abre en una sección (por ejemplo al cambiar de idioma desde Telecom),
+// cargo todas las demos y vuelvo a ubicar la sección cuando terminan, porque al dibujarse
+// cambian la altura de la página. Si la persona ya empezó a moverse, no la muevo.
+const hashTarget = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+if (hashTarget) {
+  let userMoved = false;
+  const markMoved = () => { userMoved = true; };
+  ["wheel", "touchstart", "keydown"].forEach((type) => window.addEventListener(type, markMoved, { once: true, passive: true }));
+  Promise.all(pending.map((demo) => { observer.unobserve(demo); return loadDemo(demo); }))
+    .then(() => { if (!userMoved) hashTarget.scrollIntoView({ behavior: "instant", block: "start" }); });
+}
 // respaldo: si la página ya cargó y el usuario no ha bajado, cargo el resto con calma
 window.addEventListener("load", () => setTimeout(() => {
   for (const demo of pending) {
