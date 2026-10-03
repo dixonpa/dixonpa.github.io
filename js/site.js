@@ -21,7 +21,90 @@ function el(name, attrs = {}, parent) {
   return node;
 }
 
-const fmt = (x, d = 1) => x.toLocaleString("es-PE", { minimumFractionDigits: d, maximumFractionDigits: d });
+// Textos de las demos en español e inglés; el idioma sale del atributo lang de la página
+const LANG = document.documentElement.lang.startsWith("en") ? "en" : "es";
+const TEXT = {
+  es: {
+    locale: "es-PE",
+    to: "a",
+    oilyPass: "Cumple el criterio: riesgo de pérdida menor a 2.5%.",
+    oilyFail: "No cumple el criterio: riesgo de pérdida de 2.5% o más.",
+    oilyFoot: (size, rmse) => `Uso los ${size} pozos de validación de la región (reserva predicha y reserva real). En cada simulación tomo puntos al azar, abro los de mayor reserva predicha y sumo su reserva real. RMSE del modelo en esta región: ${rmse}. ` +
+      "El azar de la web no es el mismo que el de NumPy, así que los números cambian un poco respecto al notebook (región 1: 4.78 M y 2.0%).",
+    oilyTip: (from, to, c) => `${from} a ${to} M USD: ${c} simulaciones`,
+    mean: "promedio",
+    threshold: "umbral",
+    years: "años",
+    telFoot: (trees, m, thr) => `Es el XGBoost ajustado del notebook (${trees} árboles), exportado a JSON y evaluado aquí en JavaScript. ` +
+      `En la prueba: AUC-ROC ${m.auc}, recall ${m.recall} y precisión ${m.precision} con umbral ${thr}. El cargo total lo calculo como meses × cargo mensual.`,
+    churnYes: "Probablemente cancela: conviene ofrecerle algo para que se quede.",
+    churnNo: "Probablemente se queda.",
+    fraudFoot: (trees, m, thr) => `La probabilidad viene de un modelo de demostración: un XGBoost de ${trees} árboles, porque el Random Forest del proyecto pesa cientos de MB. ` +
+      `En la prueba logra AUC-PR ${m.auc_pr}, recall ${m.recall} y precisión ${m.precision} con umbral ${thr} (el modelo del proyecto llega a AUC-PR 0.881). ` +
+      "El día, la distancia y la población de la ciudad quedan en la mediana, salvo en los ejemplos reales.",
+    fraudTip: (name, rate, n) => `${name}: ${rate} de fraude en ${n} transacciones`,
+    notes: {
+      hour: "Tasa de fraude por hora del día. Casi todo el fraude pasa entre las 22:00 y las 3:00.",
+      amount: "Tasa de fraude por monto, en USD. Entre 800 y 1200 USD, la mitad de las compras son fraude.",
+      category: "Tasa de fraude por categoría. Las compras en línea y el supermercado concentran más fraude.",
+    },
+    noteTail: (rows, rate) => `La barra dorada es tu transacción. Total: ${rows} transacciones, ${rate} de fraude.`,
+    more: "más",
+    fraudYes: "El modelo la marcaría como fraude.",
+    fraudNo: "El modelo la dejaría pasar.",
+    wasFraud: " En los datos, sí era fraude.",
+    wasNormal: " En los datos, era una compra normal.",
+    loadError: "No se pudieron cargar los datos de esta demo. Recarga la página para intentarlo de nuevo.",
+    categories: {
+      shopping_net: "Compras en línea", misc_net: "Varios en línea", grocery_pos: "Supermercado",
+      shopping_pos: "Compras en tienda", gas_transport: "Gasolina y transporte", misc_pos: "Varios en tienda",
+      grocery_net: "Supermercado en línea", travel: "Viajes", personal_care: "Cuidado personal",
+      entertainment: "Entretenimiento", kids_pets: "Niños y mascotas", food_dining: "Restaurantes",
+      home: "Hogar", health_fitness: "Salud y deporte",
+    },
+  },
+  en: {
+    locale: "en-US",
+    to: "to",
+    oilyPass: "Meets the rule: risk of loss below 2.5%.",
+    oilyFail: "Fails the rule: risk of loss of 2.5% or more.",
+    oilyFoot: (size, rmse) => `I use the region's ${size} validation wells (predicted and actual reserves). Each simulation picks random points, opens the ones with the highest predicted reserves and adds up their actual reserves. Model RMSE in this region: ${rmse}. ` +
+      "The browser's random numbers are not NumPy's, so results differ a little from the notebook (region 1: 4.78 M and 2.0%).",
+    oilyTip: (from, to, c) => `${from} to ${to} M USD: ${c} simulations`,
+    mean: "mean",
+    threshold: "threshold",
+    years: "years",
+    telFoot: (trees, m, thr) => `This is the tuned XGBoost from the notebook (${trees} trees), exported to JSON and evaluated here in JavaScript. ` +
+      `On the test set: ROC AUC ${m.auc}, recall ${m.recall} and precision ${m.precision} with a ${thr} threshold. Total charges are calculated as months × monthly charge.`,
+    churnYes: "Likely to cancel: worth offering something to keep them.",
+    churnNo: "Likely to stay.",
+    fraudFoot: (trees, m, thr) => `The probability comes from a demo model: an XGBoost with ${trees} trees, because the project's Random Forest weighs hundreds of MB. ` +
+      `On the test set it reaches PR AUC ${m.auc_pr}, recall ${m.recall} and precision ${m.precision} with a ${thr} threshold (the project model reaches PR AUC 0.881). ` +
+      "Day of week, distance and city population stay at their median, except in the real examples.",
+    fraudTip: (name, rate, n) => `${name}: ${rate} fraud in ${n} transactions`,
+    notes: {
+      hour: "Fraud rate by hour of day. Almost all fraud happens between 10 pm and 3 am.",
+      amount: "Fraud rate by amount, in USD. Between 800 and 1200 USD, half of the purchases are fraud.",
+      category: "Fraud rate by category. Online shopping and groceries concentrate the most fraud.",
+    },
+    noteTail: (rows, rate) => `The gold bar is your transaction. Total: ${rows} transactions, ${rate} fraud.`,
+    more: "more",
+    fraudYes: "The model would flag it as fraud.",
+    fraudNo: "The model would let it through.",
+    wasFraud: " In the data, it was fraud.",
+    wasNormal: " In the data, it was a normal purchase.",
+    loadError: "This demo's data could not be loaded. Reload the page to try again.",
+    categories: {
+      shopping_net: "Online shopping", misc_net: "Misc. online", grocery_pos: "Groceries",
+      shopping_pos: "In-store shopping", gas_transport: "Gas and transport", misc_pos: "Misc. in store",
+      grocery_net: "Online groceries", travel: "Travel", personal_care: "Personal care",
+      entertainment: "Entertainment", kids_pets: "Kids and pets", food_dining: "Restaurants",
+      home: "Home", health_fitness: "Health and fitness",
+    },
+  },
+}[LANG];
+
+const fmt = (x, d = 1) => x.toLocaleString(TEXT.locale, { minimumFractionDigits: d, maximumFractionDigits: d });
 const pct = (x, d = 0) => `${fmt(x * 100, d)}%`;
 // probabilidades muy chicas: "<0.1%" dice más que "0.0%"
 const proba = (p) => (p < 0.001 ? "<0.1%" : pct(p, p < 0.1 ? 1 : 0));
@@ -224,6 +307,8 @@ function encode(spec, values) {
   return x;
 }
 
+const metrics3 = (m) => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, fmt(v, 3)]));
+
 function setMeter(meter, p, threshold) {
   meter.querySelector(".meter-fill").style.transform = `scaleX(${p})`;
   meter.classList.toggle("is-over", p >= threshold);
@@ -274,13 +359,11 @@ function oilyGiant(root, data) {
     const mean = profits.reduce((a, b) => a + b, 0) / SIMULATIONS;
     const risk = profits.filter((p) => p < 0).length / SIMULATIONS;
     q('[data-out="mean"]').textContent = `${fmt(mean, 2)} M`;
-    q('[data-out="ci"]').textContent = `${fmt(sorted[24], 1)} a ${fmt(sorted[974], 1)} M`;
+    q('[data-out="ci"]').textContent = `${fmt(sorted[24], 1)} ${TEXT.to} ${fmt(sorted[974], 1)} M`;
     q('[data-out="risk"]').textContent = pct(risk, 1);
     setVerdict(q('[data-out="verdict"]'), risk < 0.025,
-      risk < 0.025 ? "Cumple el criterio: riesgo de pérdida menor a 2.5%." : "No cumple el criterio: riesgo de pérdida de 2.5% o más.");
-    q('[data-out="foot"]').textContent =
-      `Uso los ${fmt(size, 0)} pozos de validación de la región (reserva predicha y reserva real). En cada simulación tomo puntos al azar, abro los de mayor reserva predicha y sumo su reserva real. RMSE del modelo en esta región: ${fmt(region.rmse, 2)}. ` +
-      `El azar de la web no es el mismo que el de NumPy, así que los números cambian un poco respecto al notebook (región 1: 4.78 M y 2.0%).`;
+      risk < 0.025 ? TEXT.oilyPass : TEXT.oilyFail);
+    q('[data-out="foot"]').textContent = TEXT.oilyFoot(fmt(size, 0), fmt(region.rmse, 2));
     draw(mean);
   }
 
@@ -296,7 +379,7 @@ function oilyGiant(root, data) {
         value: c,
         label: "",
         cls: from + binW / 2 < 0 ? "loss" : "",
-        tip: `${fmt(from, 1)} a ${fmt(from + binW, 1)} M USD: ${c} simulaciones`,
+        tip: TEXT.oilyTip(fmt(from, 1), fmt(from + binW, 1), c),
       };
     });
     const { svg, m, w, h, height } = columnChart(chart, items, { yFormat: (v) => fmt(v, 0) });
@@ -310,7 +393,7 @@ function oilyGiant(root, data) {
     const mx = xOf(mean);
     el("line", { class: "mean-line", x1: mx, x2: mx, y1: m.top - 6, y2: m.top + h }, svg);
     const label = el("text", { class: "mean-label", x: mx + 5, y: m.top + 4 }, svg);
-    label.textContent = "promedio";
+    label.textContent = TEXT.mean;
     // los rectángulos de hover van al final para quedar encima de las líneas
     svg.querySelectorAll(".hit").forEach((hit) => svg.appendChild(hit));
   }
@@ -352,12 +435,8 @@ function telecom(root, spec) {
   const setRadio = (name, value) => { q(`[name="${name}"][value="${value}"]`).checked = true; };
   const meter = q("[data-meter]");
   meter.querySelector(".pick-threshold").style.setProperty("--t", spec.threshold);
-  meter.querySelector(".pick-threshold span").textContent = `umbral ${fmt(spec.threshold, 2)}`;
-
-  q('[data-out="foot"]').textContent =
-    `Es el XGBoost ajustado del notebook (${model.trees.length} árboles), exportado a JSON y evaluado aquí en JavaScript. ` +
-    `En la prueba: AUC-ROC ${fmt(spec.metrics.auc, 3)}, recall ${fmt(spec.metrics.recall, 3)} y precisión ${fmt(spec.metrics.precision, 3)} con umbral ${fmt(spec.threshold, 2)}. ` +
-    `El cargo total lo calculo como meses × cargo mensual.`;
+  meter.querySelector(".pick-threshold span").textContent = `${TEXT.threshold} ${fmt(spec.threshold, 2)}`;
+  q('[data-out="foot"]').textContent = TEXT.telFoot(model.trees.length, metrics3(spec.metrics), fmt(spec.threshold, 2));
 
   function update() {
     const internet = radio("tel-net");
@@ -393,7 +472,7 @@ function telecom(root, spec) {
     paintRange(tenure); paintRange(monthly);
     setMeter(meter, p, spec.threshold);
     setVerdict(q('[data-out="verdict"]'), p < spec.threshold,
-      p >= spec.threshold ? "Probablemente cancela: conviene ofrecerle algo para que se quede." : "Probablemente se queda.");
+      p >= spec.threshold ? TEXT.churnYes : TEXT.churnNo);
   }
 
   const PRESETS = {
@@ -419,13 +498,7 @@ function telecom(root, spec) {
 
 /* ---------------- Fraude ---------------- */
 
-const CATEGORIES = {
-  shopping_net: "Compras en línea", misc_net: "Varios en línea", grocery_pos: "Supermercado",
-  shopping_pos: "Compras en tienda", gas_transport: "Gasolina y transporte", misc_pos: "Varios en tienda",
-  grocery_net: "Supermercado en línea", travel: "Viajes", personal_care: "Cuidado personal",
-  entertainment: "Entretenimiento", kids_pets: "Niños y mascotas", food_dining: "Restaurantes",
-  home: "Hogar", health_fitness: "Salud y deporte",
-};
+const CATEGORIES = TEXT.categories;
 
 function fraud(root, spec) {
   const model = prepareModel(spec.model);
@@ -437,7 +510,7 @@ function fraud(root, spec) {
   const chart = q('[data-chart="fraud"]');
   const meter = q("[data-meter]");
   meter.querySelector(".pick-threshold").style.setProperty("--t", spec.threshold);
-  meter.querySelector(".pick-threshold span").textContent = `umbral ${fmt(spec.threshold, 2)}`;
+  meter.querySelector(".pick-threshold span").textContent = `${TEXT.threshold} ${fmt(spec.threshold, 2)}`;
 
   // el monto va en escala logarítmica: hay muchas compras chicas y pocas grandes
   const AMT_MAX = 2500;
@@ -455,29 +528,22 @@ function fraud(root, spec) {
   let example = null;
   const exampleIndex = { 0: 0, 1: 0 };
 
-  q('[data-out="foot"]').textContent =
-    `La probabilidad viene de un modelo de demostración: un XGBoost de ${model.trees.length} árboles, porque el Random Forest del proyecto pesa cientos de MB. ` +
-    `En la prueba logra AUC-PR ${fmt(spec.metrics.auc_pr, 3)}, recall ${fmt(spec.metrics.recall, 3)} y precisión ${fmt(spec.metrics.precision, 3)} con umbral ${fmt(spec.threshold, 2)} ` +
-    `(el modelo del proyecto llega a AUC-PR 0.881). El día, la distancia y la población de la ciudad quedan en la mediana, salvo en los ejemplos reales.`;
+  q('[data-out="foot"]').textContent = TEXT.fraudFoot(model.trees.length, metrics3(spec.metrics), fmt(spec.threshold, 2));
 
   const ratePct = (r) => `${fmt(r * 100, r < 0.01 ? 2 : 1)}%`;
-  const tip = (name, d) => `${name}: ${ratePct(d.rate)} de fraude en ${fmt(d.n, 0)} transacciones`;
+  const tip = (name, d) => TEXT.fraudTip(name, ratePct(d.rate), fmt(d.n, 0));
 
   function drawChart() {
     const amt = toAmt(amtInput.value);
-    const notes = {
-      hour: "Tasa de fraude por hora del día. Casi todo el fraude pasa entre las 22:00 y las 3:00.",
-      amount: "Tasa de fraude por monto, en USD. Entre 800 y 1200 USD, la mitad de las compras son fraude.",
-      category: "Tasa de fraude por categoría. Las compras en línea y el supermercado concentran más fraude.",
-    };
-    q('[data-out="chartnote"]').textContent = `${notes[tab]} La barra dorada es tu transacción. Total: ${fmt(spec.rows, 0)} transacciones, ${ratePct(spec.fraud_rate)} de fraude.`;
+    const notes = TEXT.notes;
+    q('[data-out="chartnote"]').textContent = `${notes[tab]} ${TEXT.noteTail(fmt(spec.rows, 0), ratePct(spec.fraud_rate))}`;
     if (tab === "hour") {
       columnChart(chart, spec.by_hour.map((d) => ({ label: String(d.hour), value: d.rate * 100, tip: tip(`${d.hour}:00`, d) })),
         { yFormat: (v) => `${fmt(v, 1)}%`, highlight: Number(hourInput.value) });
     } else if (tab === "amount") {
       const hl = spec.by_amount.findIndex((d) => amt > d.from && amt <= d.to);
       columnChart(chart, spec.by_amount.map((d) => ({
-        label: d.to > 5000 ? `+${d.from}` : String(d.to), value: d.rate * 100, tip: tip(`${d.from} a ${d.to > 5000 ? "más" : d.to} USD`, d),
+        label: d.to > 5000 ? `+${d.from}` : String(d.to), value: d.rate * 100, tip: tip(`${d.from} ${TEXT.to} ${d.to > 5000 ? TEXT.more : d.to} USD`, d),
       })), { yFormat: (v) => `${fmt(v, 0)}%`, highlight: hl < 0 ? 0 : hl });
     } else {
       const hl = spec.by_category.findIndex((d) => d.category === category.value);
@@ -496,14 +562,14 @@ function fraud(root, spec) {
 
     q('[data-out="amt"]').textContent = `${fmt(state.amt, 0)} USD`;
     q('[data-out="hour"]').textContent = `${String(state.hour).padStart(2, "0")}:00`;
-    q('[data-out="age"]').textContent = `${state.age} años`;
+    q('[data-out="age"]').textContent = `${state.age} ${TEXT.years}`;
     [amtInput, hourInput, ageInput].forEach(paintRange);
 
     const p = predictProba(model, encode(spec, state));
     q('[data-out="proba"]').textContent = proba(p);
     setMeter(meter, p, spec.threshold);
-    let text = p >= spec.threshold ? "El modelo la marcaría como fraude." : "El modelo la dejaría pasar.";
-    if (example) text += example.is_fraud ? " En los datos, sí era fraude." : " En los datos, era una compra normal.";
+    let text = p >= spec.threshold ? TEXT.fraudYes : TEXT.fraudNo;
+    if (example) text += example.is_fraud ? TEXT.wasFraud : TEXT.wasNormal;
     setVerdict(q('[data-out="verdict"]'), p < spec.threshold, text);
     drawChart();
   }
@@ -524,8 +590,7 @@ function fraud(root, spec) {
     q('[data-out="proba"]').textContent = proba(p);
     setMeter(meter, p, spec.threshold);
     setVerdict(q('[data-out="verdict"]'), p < spec.threshold,
-      (p >= spec.threshold ? "El modelo la marcaría como fraude." : "El modelo la dejaría pasar.") +
-      (example.is_fraud ? " En los datos, sí era fraude." : " En los datos, era una compra normal."));
+      (p >= spec.threshold ? TEXT.fraudYes : TEXT.fraudNo) + (example.is_fraud ? TEXT.wasFraud : TEXT.wasNormal));
   }));
 
   const tabs = [...root.querySelectorAll("[data-tab]")];
@@ -551,10 +616,12 @@ function fraud(root, spec) {
 
 /* ---------------- Carga perezosa de cada demo ---------------- */
 
+// las rutas salen de la ubicación de este script, así la versión en inglés (/en/) usa los mismos datos
+const DATA_URL = new URL("../data/", document.currentScript.src);
 const DEMOS = {
-  oilygiant: { file: "data/oilygiant.json", init: oilyGiant },
-  telecom: { file: "data/telecom.json", init: telecom },
-  fraud: { file: "data/fraud.json", init: fraud },
+  oilygiant: { file: new URL("oilygiant.json", DATA_URL), init: oilyGiant },
+  telecom: { file: new URL("telecom.json", DATA_URL), init: telecom },
+  fraud: { file: new URL("fraud.json", DATA_URL), init: fraud },
 };
 
 async function loadDemo(root) {
@@ -568,7 +635,7 @@ async function loadDemo(root) {
     root.setAttribute("aria-busy", "false");
   } catch (err) {
     root.querySelector('[data-out="foot"]').textContent =
-      "No se pudieron cargar los datos de esta demo. Recarga la página para intentarlo de nuevo.";
+      TEXT.loadError;
     console.error(err);
   }
 }

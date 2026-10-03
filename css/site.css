@@ -252,6 +252,14 @@ h2 {
 .probe-inputs { display: grid; gap: 1.25rem; align-content: start; }
 .probe-result { align-self: start; }
 
+.demo-hint {
+  grid-column: 1 / -1;
+  margin: 0;
+  max-width: 70ch;
+  font-size: .9375rem;
+  color: var(--bone);
+}
+
 .demo-foot {
   grid-column: 1 / -1;
   margin: 0;
@@ -551,7 +559,6 @@ select {
 .skills li { padding: .4375rem 0; border-top: 1px solid var(--line); }
 .learning { margin: 2rem 0 0; color: var(--rock); max-width: var(--measure); }
 
-.about .steps-note { margin: -.25rem 0 1rem; color: var(--rock); font-size: .9375rem; }
 .subhead { margin: 2.5rem 0 1rem; font-size: 1rem; font-weight: 500; color: var(--ochre); }
 
 /* Cómo trabajo: es una secuencia real, por eso va numerada */
@@ -634,5 +641,5 @@ footer {
   [data-demo="telecom"] .demo-output .meter { margin-top: .875rem; }
   [data-demo="telecom"] .meter .pick span { top: auto; bottom: -1.5rem; }
   [data-demo="telecom"] .meter-scale { display: none; }
-  [data-demo="telecom"] .verdict { margin-top: 1.625rem; font-size: .875rem; }
+  [data-demo="telecom"] .verdict { margin-top: 2.125rem; font-size: .875rem; }
 }
