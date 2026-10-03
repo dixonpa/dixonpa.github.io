@@ -74,7 +74,47 @@ a {
 }
 
 /* ---------- Hero ---------- */
-.hero { padding-top: clamp(2.5rem, 8vw, 5.5rem); }
+.hero { padding-top: max(1rem, env(safe-area-inset-top)); }
+
+/* Selector de idioma: dos páginas separadas (/ y /en/), por eso son enlaces y no un botón */
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: clamp(1.25rem, 6vw, 4rem);
+}
+.lang-switch {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--slate);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+}
+.lang-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 36px;
+  padding: 0 .75rem;
+  border-radius: calc(var(--radius-control) - 2px);
+  color: var(--rock);
+  font-size: .875rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 160ms var(--ease-out), color 150ms ease, background-color 150ms ease;
+}
+.lang-switch a[aria-current="page"] {
+  background: var(--slate-2);
+  color: var(--bone);
+  cursor: default;
+}
+.lang-switch a:not([aria-current]):active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .lang-switch a:not([aria-current]):hover { color: var(--bone); background: var(--basalt); }
+}
 
 .hero-id {
   display: flex;
