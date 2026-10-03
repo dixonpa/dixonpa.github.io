@@ -37,60 +37,63 @@ function setVerdict(node, ok, text) {
   node.querySelector("span").textContent = text;
 }
 
-/* ---------------- Sismograma ---------------- */
+/* ---------------- Fondo sísmico ---------------- */
 
-function seismogram() {
-  const fig = document.querySelector(".seismo");
-  const path = fig.querySelector(".seismo-trace");
+// Registro de varias trazas, como un sismograma de estaciones a distinta distancia:
+// la onda P llega primero y la S después, y ambas llegan más tarde en las trazas lejanas.
+function seismicBackdrop() {
+  const box = document.querySelector(".backdrop");
+  const svg = box.querySelector("svg");
   const rand = mulberry32(7);
   const gauss = () => Math.sqrt(-2 * Math.log(rand() + 1e-9)) * Math.cos(2 * Math.PI * rand());
 
-  const duration = 60, dt = 0.025, n = duration / dt;
-  // el evento llega a la mitad: el texto del hero queda sobre el ruido y las ondas grandes a la derecha
-  const tP = 34, tS = 40, tR = 45;
-  const signal = new Float64Array(n);
+  const duration = 60, dt = 0.05, n = duration / dt;
+  const traces = 11;
+  const rowH = 900 / (traces + 1);
 
-  // ondas: suma de senos con frecuencias cercanas y fase al azar, por una envolvente
-  const packet = (t0, freqs, amp, rise, decay) => {
-    const phases = freqs.map(() => rand() * 2 * Math.PI);
-    for (let i = 0; i < n; i++) {
-      const t = i * dt - t0;
+  const trace = (k) => {
+    const signal = new Float64Array(n);
+    const x = k / (traces - 1); // distancia relativa de la estación
+    const tP = Math.hypot(12, 16 * x), tS = Math.hypot(19, 30 * x), tR = 24 + 22 * x;
+    const packet = (t0, freqs, amp, rise, decay) => {
+      const phases = freqs.map(() => rand() * 2 * Math.PI);
+      for (let i = 0; i < n; i++) {
+        const t = i * dt - t0;
+        if (t < 0) continue;
+        const env = amp * (1 - Math.exp(-t / rise)) * Math.exp(-t / decay);
+        let v = 0;
+        freqs.forEach((f, j) => { v += Math.sin(2 * Math.PI * f * t + phases[j]); });
+        signal[i] += env * v / freqs.length;
+      }
+    };
+    const fade = 1 - 0.45 * x; // las estaciones lejanas registran menos amplitud
+    packet(tP, [2.1, 2.7, 3.3, 4.1], 0.35 * fade, 0.1, 2.4);  // P: pequeña y rápida
+    packet(tS, [0.8, 1.1, 1.4], 0.9 * fade, 0.3, 4);          // S: más grande y lenta
+    for (let i = 0; i < n; i++) {                              // ondas superficiales
+      const t = i * dt - tR;
       if (t < 0) continue;
-      const env = amp * (1 - Math.exp(-t / rise)) * Math.exp(-t / decay);
-      let s = 0;
-      freqs.forEach((f, k) => { s += Math.sin(2 * Math.PI * f * t + phases[k]); });
-      signal[i] += env * s / freqs.length;
+      signal[i] += 1.1 * fade * (1 - Math.exp(-t / 2.5)) * Math.exp(-t / 8) * Math.sin(2 * Math.PI * (0.22 + 0.02 * t) * t);
     }
+    let noise = 0;
+    for (let i = 0; i < n; i++) {
+      noise = 0.7 * noise + 0.3 * gauss();
+      signal[i] += 0.04 * noise;
+    }
+    return signal;
   };
 
-  packet(tP, [2.6, 3.1, 3.7, 4.3, 5.2], 0.34, 0.08, 2.6);   // P: pequeña y de alta frecuencia
-  packet(tS, [0.9, 1.15, 1.4, 1.8], 0.95, 0.25, 4.5);       // S: más grande y lenta
-  // ondas superficiales: dispersivas, llegan primero los periodos largos
-  for (let i = 0; i < n; i++) {
-    const t = i * dt - tR;
-    if (t < 0) continue;
-    const f = 0.22 + 0.018 * t;
-    const env = 1.25 * (1 - Math.exp(-t / 2.5)) * Math.exp(-t / 9);
-    signal[i] += env * Math.sin(2 * Math.PI * f * t * 0.9 + 0.6);
+  for (let k = 0; k < traces; k++) {
+    const signal = trace(k);
+    const y0 = rowH * (k + 1);
+    let d = "";
+    for (let i = 0; i < n; i++) {
+      const xPos = (i / (n - 1)) * 1200;
+      d += `${i ? "L" : "M"}${xPos.toFixed(1)},${(y0 - signal[i] * rowH * 1.1).toFixed(1)}`;
+    }
+    el("path", { d }, svg);
   }
-  // ruido de fondo suavizado
-  let noise = 0;
-  for (let i = 0; i < n; i++) {
-    noise = 0.75 * noise + 0.25 * gauss();
-    signal[i] += 0.035 * noise;
-  }
-
-  const peak = signal.reduce((m, v) => Math.max(m, Math.abs(v)), 0);
-  let d = "";
-  for (let i = 0; i < n; i++) {
-    const x = (i / (n - 1)) * 1200;
-    const y = 100 - (signal[i] / peak) * 92;
-    d += `${i ? "L" : "M"}${x.toFixed(1)},${y.toFixed(1)}`;
-  }
-  path.setAttribute("d", d);
-
-  if (reduceMotion) { fig.classList.add("is-drawn"); return; }
-  requestAnimationFrame(() => requestAnimationFrame(() => fig.classList.add("is-drawn")));
+  // aparece con un fundido para que no "salte" al cargar
+  requestAnimationFrame(() => box.classList.add("is-ready"));
 }
 
 /* ---------------- Utilidades de gráficos ---------------- */
@@ -570,7 +573,7 @@ async function loadDemo(root) {
   }
 }
 
-seismogram();
+seismicBackdrop();
 
 const observer = new IntersectionObserver((entries) => {
   for (const entry of entries) {

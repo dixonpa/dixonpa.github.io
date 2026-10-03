@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Paulo Alvarez, Data Scientist y Data Analyst junior. Bachiller en Ingeniería Geofísica. Proyectos de Machine Learning con demos que corren en el navegador.">
+  <meta name="description" content="Paulo Alvarez, Data Analyst y Data Scientist. Bachiller en Ingeniería Geofísica con experiencia aplicando datos a operaciones reales. Proyectos de Machine Learning con demos que corren en el navegador.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#151B22">
   <title>Paulo Alvarez | Data Scientist</title>
@@ -14,24 +14,18 @@
   <script src="js/site.js" defer></script>
 </head>
 <body>
+  <div class="backdrop" aria-hidden="true">
+    <svg viewBox="0 0 1200 900" preserveAspectRatio="none" focusable="false"></svg>
+  </div>
+
   <header class="hero">
-    <div class="seismo" aria-hidden="true">
-      <div class="seismo-plot">
-        <svg viewBox="0 0 1200 200" preserveAspectRatio="none" focusable="false">
-          <path class="seismo-trace" d=""/>
-        </svg>
-        <div class="seismo-cover"></div>
-        <div class="pick pick-p" style="--t: 0.5667"><span>P</span></div>
-        <div class="pick pick-s" style="--t: 0.6667"><span>S</span></div>
-      </div>
-    </div>
-    <div class="wrap hero-content">
+    <div class="wrap">
       <div class="hero-id">
         <img src="https://github.com/dixonpa.png" alt="Foto de Paulo Alvarez" width="52" height="52">
-        <p><strong>Data Scientist y Data Analyst junior</strong>Bachiller en Ingeniería Geofísica</p>
+        <p><strong>Data Analyst y Data Scientist</strong>Bachiller en Ingeniería Geofísica</p>
       </div>
       <h1>Paulo Alvarez</h1>
-      <p class="intro">Me formé leyendo señales del subsuelo y ahora trabajo con datos de negocio. Exploro los datos, construyo modelos y explico qué decisión conviene tomar.</p>
+      <p class="intro">Uso los datos para que una operación cueste menos y decida mejor. Vengo de la geofísica, donde aprendí a controlar la calidad de las mediciones y a encontrar anomalías; hoy lo aplico con Python, SQL y Machine Learning.</p>
       <ul class="hero-links">
         <li><a href="#proyectos">Proyectos y demos</a></li>
         <li><a href="#contacto">Contacto</a></li>
@@ -39,14 +33,14 @@
         <li><a href="https://github.com/dixonpa">GitHub</a></li>
       </ul>
     </div>
-
   </header>
 
   <main class="wrap">
     <section id="sobre-mi" class="about" aria-labelledby="t-sobre-mi">
       <h2 id="t-sobre-mi">Sobre mí</h2>
-      <p>Soy bachiller en Ingeniería Geofísica y estoy haciendo la transición hacia Data Analytics y Data Science. Mi base cuantitativa viene de trabajar con mediciones de campo, control de calidad y detección de anomalías, y la complementé con el programa de Data Science de TripleTen.</p>
-      <p>En construcción y logística apliqué análisis de datos a problemas reales: proyecté la demanda de materiales, comparé precios de compra contra una referencia de mercado y revisé supuestos de costos con ingenieros y arquitectos. A largo plazo quiero combinar datos e IA con las geociencias.</p>
+      <p>Soy bachiller en Ingeniería Geofísica. Mi base cuantitativa viene de trabajar con mediciones de campo: controlar su calidad, detectar anomalías y sacar conclusiones de señales con ruido. La complementé con el programa de Data Science de TripleTen.</p>
+      <p>Antes de trabajar formalmente en datos, ya los usaba para resolver problemas de operación en construcción y logística. Proyecté la demanda de materiales y propuse consolidar pedidos, lo que bajó el costo unitario cerca de 10%. Armé una referencia de precios de mercado con web scraping en Python, encontré compras muy por encima de esa referencia y el hallazgo llevó a revisar las compras de otros proyectos. También revisé supuestos de presupuestos de obra con ingenieros y arquitectos.</p>
+      <p>Esa experiencia me enseñó a mirar el proceso que hay detrás de los números y a entregar recomendaciones que la gente de operación puede aplicar. A largo plazo quiero combinar datos e IA con las geociencias.</p>
       <h3 class="subhead">Cómo trabajo</h3>
       <ol class="steps">
         <li>Entender el problema</li>
@@ -60,13 +54,12 @@
 
     <section id="habilidades" aria-labelledby="t-habilidades">
       <h2 id="t-habilidades">Habilidades</h2>
-      <p class="section-lead">Las separo según dónde las usé, para que se vea qué tan sólida es cada una.</p>
       <div class="skills">
         <div>
-          <h3>En el trabajo</h3>
+          <h3>Aplicadas en el trabajo</h3>
           <ul>
             <li>Excel: consumos, compras, presupuestos y matrices de riesgo</li>
-            <li>Web scraping básico con Python (BeautifulSoup)</li>
+            <li>Web scraping con Python (BeautifulSoup)</li>
           </ul>
         </div>
         <div>
@@ -81,54 +74,19 @@
           </ul>
         </div>
         <div>
-          <h3>Vistos en cursos</h3>
+          <h3>Formación complementaria</h3>
           <ul>
             <li>PySpark y Big Data</li>
             <li>Power BI</li>
           </ul>
           <h3 class="skills-later">Otros</h3>
           <ul>
-            <li>Java y Spring Boot (básico)</li>
-            <li>IPERC y Ley 29783 de Seguridad y Salud en el Trabajo</li>
+            <li>Java y Spring Boot</li>
+            <li>Seguridad y salud en el trabajo: IPERC y Ley 29783</li>
           </ul>
         </div>
       </div>
-      <p class="learning">Idiomas: español nativo; inglés intermedio en lectura y básico en conversación.</p>
-    </section>
-
-    <section id="experiencia" aria-labelledby="t-experiencia">
-      <h2 id="t-experiencia">Experiencia con datos</h2>
-      <div class="jobs">
-        <article class="job">
-          <div class="job-head">
-            <h3>Almacenero en TDC</h3>
-            <p>Lima, 2025–2026</p>
-          </div>
-          <div class="job-body">
-            <p>Además de mis funciones de almacén, por iniciativa propia apoyé a ingenieros y arquitectos con análisis:</p>
-            <ul>
-              <li>Proyecté la demanda de materiales de consumo según el número de trabajadores y el consumo histórico por quincena, y propuse consolidar pedidos. Se aplicó en la mayoría de las compras y bajó el costo unitario en cerca de 10%.</li>
-              <li>Armé una referencia de mercado con web scraping en Python, normalizada por unidad y marca, y la comparé con el histórico de compras. Encontré precios varias veces más altos que la referencia, los verifiqué con documentos y entregas en campo, y el reporte llevó a revisar las compras de otros proyectos.</li>
-              <li>Revisé supuestos de presupuestos de obra: dependencias entre actividades, tiempos reales de avance y márgenes. Varios presupuestos se ajustaron y el cliente los aceptó con los cambios.</li>
-            </ul>
-          </div>
-        </article>
-        <article class="job">
-          <div class="job-head">
-            <h3>Asistente SSOMA y prevencionista de riesgos en Corporación Kamac y TDC</h3>
-            <p>Lima, 2022–2025</p>
-          </div>
-          <div class="job-body">
-            <p>Registré y analicé cuasi accidentes en Excel para encontrar factores que se repetían y apoyar medidas preventivas.</p>
-          </div>
-        </article>
-      </div>
-      <h3 class="subhead">Formación</h3>
-      <ul class="education">
-        <li><strong>Bachiller en Ingeniería Geofísica</strong>, Universidad Nacional de San Agustín de Arequipa</li>
-        <li><strong>Programa de Data Science</strong>, TripleTen LatAm, 2024–2025</li>
-        <li><strong>Programa Back-End Java</strong>, Alura Latam (Oracle Next Education), 2022–2023</li>
-      </ul>
+      <p class="learning">Idiomas: español nativo e inglés intermedio, sobre todo en lectura técnica.</p>
     </section>
 
     <section id="proyectos" aria-labelledby="t-proyectos">
@@ -330,7 +288,7 @@
 
     <section id="contacto" class="contact" aria-labelledby="t-contacto">
       <h2 id="t-contacto">Contacto</h2>
-      <p>Estoy buscando mi primer puesto como Data Analyst o Data Scientist. Vivo en Arequipa y estoy disponible para trabajo remoto o presencial en Perú. Escríbeme y te respondo pronto.</p>
+      <p>Si tu equipo necesita a alguien que entienda el problema antes de abrir el notebook, conversemos. Vivo en Arequipa y estoy disponible para trabajo remoto o presencial en Perú.</p>
       <ul class="contact-list">
         <li>
           <a href="mailto:palvareza17@gmail.com">

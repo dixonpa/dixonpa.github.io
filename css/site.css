@@ -30,7 +30,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--basalt);
+  background: transparent; /* el color base está en html; así se ve el fondo fijo */
   color: var(--bone);
   font-family: "Geologica", "Segoe UI", system-ui, sans-serif;
   font-weight: 330;
@@ -120,49 +120,34 @@ a {
   font-weight: 450;
 }
 
-/* ---------- Sismograma (marca de agua detrás del hero) ---------- */
-.hero { position: relative; overflow: hidden; padding-bottom: clamp(3rem, 7vw, 4.5rem); }
-.hero-content { position: relative; z-index: 1; }
-
-.seismo {
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  right: 0;
-  top: 58%;
-  height: clamp(200px, 30vw, 360px);
-  transform: translateY(-50%);
+/* ---------- Fondo: registro sísmico de varias trazas, fijo y muy tenue ---------- */
+.backdrop {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 100lvh; /* no salta cuando aparece o se oculta la barra del navegador */
+  z-index: -1;
   pointer-events: none;
-  /* se desvanece en los bordes para que no parezca un gráfico recortado */
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  opacity: 0;
+  transition: opacity 900ms ease-out;
+  /* más suave a la izquierda, donde está el texto */
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,.35), rgba(0,0,0,.35) 30%, #000 85%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,.35), rgba(0,0,0,.35) 30%, #000 85%);
 }
-.seismo-plot { position: relative; height: 100%; }
-.seismo-plot svg { display: block; width: 100%; height: 100%; overflow: visible; }
-
-.seismo-trace {
+.backdrop.is-ready { opacity: 1; }
+/* en móvil se ve solo el tramo de las llegadas (≈ 9 a 39 s), si no las trazas quedan apretadas */
+@media (max-width: 760px) {
+  .backdrop { overflow: hidden; -webkit-mask-image: none; mask-image: none; }
+  .backdrop svg { width: 200%; margin-left: -30%; }
+  .backdrop path { opacity: .09; }
+}
+.backdrop svg { display: block; width: 100%; height: 100%; }
+.backdrop path {
   fill: none;
   stroke: var(--bone);
-  stroke-width: 1.25;
+  stroke-width: 1;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
-  opacity: .14;
-}
-.seismo .pick { opacity: .5; top: 14%; bottom: 14%; }
-.seismo .pick span { top: -1.25rem; font-size: .75rem; }
-
-/* en móvil el texto ocupa todo el ancho: el sismograma pasa a ser una franja debajo */
-@media (max-width: 760px) {
-  .hero { padding-bottom: 0; display: flex; flex-direction: column; }
-  .seismo {
-    order: 1;
-    position: relative;
-    top: auto;
-    transform: none;
-    height: 150px;
-    margin-top: 1.5rem;
-  }
-  .seismo-trace { opacity: .3; }
+  opacity: .085;
 }
 
 /* Marca de fase: línea vertical con su etiqueta, como un pick en un sismograma */
@@ -187,25 +172,6 @@ a {
 }
 .pick-p { color: var(--ochre); }
 .pick-s { color: var(--glacier); }
-
-/* Entrada única: la traza se registra de izquierda a derecha y las fases aparecen al llegar.
-   Una cortina del color del fondo se retira con transform (corre en el compositor). */
-.seismo-cover {
-  position: absolute;
-  inset: -2rem 0 0 0;
-  background: var(--basalt);
-  transform-origin: right center;
-  transform: scaleX(0);
-  pointer-events: none;
-}
-.seismo .pick { z-index: 1; }
-@media (prefers-reduced-motion: no-preference) {
-  .js .seismo-cover { transform: scaleX(1); }
-  .js .seismo .pick { opacity: 0; }
-  /* registro a velocidad constante: linear */
-  .js .seismo.is-drawn .seismo-cover { transform: scaleX(0); transition: transform 2600ms linear; }
-  .js .seismo.is-drawn .pick { opacity: .5; transition: opacity 260ms ease-out calc(var(--t) * 2600ms); }
-}
 
 /* ---------- Secciones ---------- */
 main > section { padding-top: clamp(4rem, 9vw, 6.5rem); }
@@ -614,26 +580,6 @@ select {
   min-width: 1ch;
 }
 
-.jobs { margin-top: 1.75rem; border-top: 1px solid var(--line); }
-.job {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
-  gap: .75rem 3rem;
-  padding: 1.75rem 0;
-  border-bottom: 1px solid var(--line);
-}
-.job h3 { margin: 0; font-size: 1.0625rem; font-weight: 520; }
-.job-head p { margin: .25rem 0 0; color: var(--rock); font-size: .9375rem; }
-.job-body { max-width: var(--measure); }
-.job-body p { margin: 0 0 .75rem; }
-.job-body ul { margin: 0; padding-left: 1.125rem; }
-.job-body li { margin-bottom: .625rem; }
-.job-body li::marker { color: var(--ochre); }
-
-.education { margin: 0; padding: 0; list-style: none; max-width: var(--measure); }
-.education li { padding: .5rem 0; border-top: 1px solid var(--line); color: var(--rock); }
-.education strong { color: var(--bone); font-weight: 480; }
-
 .about p, .contact p { max-width: var(--measure); margin: 1rem 0 0; }
 .about h2 + p { margin-top: 1.25rem; }
 
@@ -667,7 +613,6 @@ footer {
 @media (max-width: 760px) {
   .skills { grid-template-columns: 1fr; gap: 1.75rem; }
   .steps { grid-template-columns: 1fr; }
-  .job { grid-template-columns: 1fr; }
   .readout { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .875rem 1rem; }
   .readout div:nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
 }
