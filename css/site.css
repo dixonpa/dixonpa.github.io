@@ -181,6 +181,7 @@ h2 {
   font-size: clamp(1.5rem, 3vw, 1.875rem);
   letter-spacing: -.015em;
 }
+.section-hook { margin: 0 0 .5rem; font-size: 1.0625rem; font-weight: 450; }
 .section-lead { margin: 0 0 2.5rem; max-width: var(--measure); color: var(--rock); }
 
 /* ---------- Proyectos ---------- */
